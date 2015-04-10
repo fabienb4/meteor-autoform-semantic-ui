@@ -1,0 +1,31 @@
+<template name="afArrayField_semanticUI">
+  <h4 class="ui block header top attached">
+    {{afFieldLabelText name=this.atts.name}}
+  </h4>
+  <div class="ui secondary segment bottom attached">
+    {{#if afFieldIsInvalid name=this.atts.name}}
+    <div class="ui form error">
+      <div class="error message">{{{afFieldMessage name=this.atts.name}}}</div>
+    </div>
+    {{/if}}
+    {{#afEachArrayItem name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
+      <div class="field autoform-array-item">
+        <div class="ui input">
+          {{#if afArrayFieldHasMoreThanMinimum name=../atts.name minCount=../atts.minCount maxCount=../atts.maxCount}}
+          <div class="ui label small red right corner autoform-remove-item">
+            <i class="icon minus"></i>
+          </div>
+          {{/if}}
+          {{> afQuickField name=this.name label=false options=afOptionsFromSchema}}
+        </div>
+      </div>
+    {{/afEachArrayItem}}
+    {{#if afArrayFieldHasLessThanMaximum name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
+      <div class="field">
+        <div class="ui button small autoform-add-item" data-autoform-field="{{this.atts.name}}" data-autoform-minCount="{{this.atts.minCount}}" data-autoform-maxCount="{{this.atts.maxCount}}">
+          Add item
+        </div>
+      </div>
+    {{/if}}
+  </div>
+</template>

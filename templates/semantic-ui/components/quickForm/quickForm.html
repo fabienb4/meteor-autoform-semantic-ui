@@ -1,0 +1,18 @@
+<template name="quickForm_semanticUI">
+  <div class="ui form">
+    {{#autoForm this.qfAutoFormContext}}
+      {{> afQuickFields quickFieldsAtts}}
+      {{#if qfShouldRenderButton}}
+        <div class="field">
+          <button type="submit" {{submitButtonAtts}}>
+          {{#with ../atts.buttonContent}}
+            {{this}}
+          {{else}}
+            Submit
+          {{/with}}
+          </button>
+        </div>
+      {{/if}}
+    {{/autoForm}}
+  </div>
+</template>

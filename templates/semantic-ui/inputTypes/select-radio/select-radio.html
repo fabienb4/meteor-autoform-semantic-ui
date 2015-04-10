@@ -1,0 +1,12 @@
+<template name="afRadioGroup_semanticUI">
+  <div class="grouped fields" {{dsk}}>
+    {{#each this.items}}
+      <div class="field">
+        <div class="ui radio checkbox">
+          <input type="radio" value="{{this.value}}" {{atts}} />
+          <label>{{this.label}}</label>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</template>

@@ -1,0 +1,9 @@
+.autoform-array-item > .input .ui.corner.label {
+  top: 0;
+  right: 0;
+  left: auto;
+}
+
+.autoform-remove-item {
+  display: inline-block;
+}
