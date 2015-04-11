@@ -3,7 +3,7 @@
 /*
  * Template helpers for "semantic-ui" templates
  */
-Template.registerHelper('attsPlusFluidClass', function attsPlusFormControlClass() {
+Template.registerHelper("attsPlusFluidClass", function attsPlusFluidClass() {
   var atts = _.clone(this.atts);
 
   // Add semantic-ui class
@@ -12,11 +12,11 @@ Template.registerHelper('attsPlusFluidClass', function attsPlusFormControlClass(
   return atts;
 });
 
-Template.registerHelper('attsPlusButtonClass', function attsPlusBtnClass() {
+Template.registerHelper("attsPlusButtonClass", function attsPlusButtonClass() {
   var atts = _.clone(this.atts);
 
   // Add semantic-ui class
-  atts = AutoForm.Utility.addClass(atts, "ui button");
+  atts = AutoForm.Utility.addClass(atts, "ui blue button");
 
   return atts;
 });

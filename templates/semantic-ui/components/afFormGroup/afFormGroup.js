@@ -4,5 +4,10 @@ Template.afFormGroup_semanticUI.helpers({
     var type = AutoForm.getInputType(self.afFieldInputAtts);
 
     return (self.skipLabel || type === "boolean-checkbox");
+  },
+  required: function bsFormGroupRequired() {
+    if (this.required) {
+       return "required";
+    }
   }
 });
