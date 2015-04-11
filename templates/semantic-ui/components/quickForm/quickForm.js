@@ -11,7 +11,7 @@ Template.quickForm_semanticUI.helpers({
     if (typeof qfAtts.buttonClasses === "string") {
       atts["class"] = qfAtts.buttonClasses;
     } else {
-      atts["class"] = "ui submit button";
+      atts["class"] = "ui blue submit button";
     }
 
     return atts;

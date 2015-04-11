@@ -6,4 +6,5 @@
 
 .autoform-remove-item {
   display: inline-block;
+  cursor: pointer;
 }
