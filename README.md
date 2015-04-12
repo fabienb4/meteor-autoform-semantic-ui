@@ -6,6 +6,7 @@ Semantic-ui template for `aldeed:autoform` package.
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [New Input Types](#new-input-types)
 - [License](#license)
 - [Contributing](#contributing)
 
@@ -28,6 +29,11 @@ Meteor.startup(function() {
 ```
 
 For more information on how to use autoform, please refer to [aldeed:autoform README](https://github.com/aldeed/meteor-autoform/blob/master/README.md).
+
+### New Input Types
+
+- `basic-select`: A basic select working without javascript (see: [basic-select](http://semantic-ui.com/collections/form.html#basic-select))
+- `select-search`: A searchable select (see: [search-selection-dropdown](http://semantic-ui.com/collections/form.html#search-selection-dropdown))
 
 ### License
 
