@@ -12,9 +12,9 @@
       <div class="field autoform-array-item">
         <div class="ui input">
           {{#if afArrayFieldHasMoreThanMinimum name=../atts.name minCount=../atts.minCount maxCount=../atts.maxCount}}
-          <div class="ui small red corner label autoform-remove-item">
-            <i class="icon minus"></i>
-          </div>
+            <div class="ui small red corner label autoform-remove-item">
+              <i class="icon minus"></i>
+            </div>
           {{/if}}
           {{> afQuickField name=this.name label=false options=afOptionsFromSchema}}
         </div>
