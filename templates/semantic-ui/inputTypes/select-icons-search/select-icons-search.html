@@ -1,0 +1,25 @@
+<template name="afSelectIconsSearch_semanticUI">
+  <div class="fluid field">
+    <div class="ui fluid search selection dropdown">
+      <input type="hidden" name="country" value="{{this.value}}" id="{{this._id}}" {{atts}}>
+      <i class="dropdown icon"></i>
+      <div class="default text">{{firstOption}}</div>
+      <div class="menu">
+        {{#each this.items}}
+          <div class="item" data-value="{{this.value}}" data-text="{{this.label}}">
+            {{# if hasIcon }}
+              <i class="{{iconClass}}"></i>
+            {{/if}}
+            {{# if hasDiv }}
+              <div class="{{divClass}}"></div>
+            {{/if}}
+            {{# if hasImage }}
+              <img class="{{imgClass}}" src="{{imgSrc}}">
+            {{/if}}
+            {{this.label}}
+          </div>
+        {{/each}}
+        </div>
+    </div>
+  </div>
+</template>
