@@ -1,5 +1,5 @@
 Template.afSelect_semanticUI.helpers({
-	atts: function dropdownAttsAdjust() {
+	atts: function selectAttsAdjust() {
 	  var atts = _.clone(this.atts);
 
 	  // Add semantic-ui class
@@ -10,5 +10,5 @@ Template.afSelect_semanticUI.helpers({
 });
 
 Template.afSelect_semanticUI.onRendered(function() {
-  $(this.firstNode).find('.ui.dropdown').dropdown();
+  $(this.firstNode).find(".ui.dropdown").dropdown();
 });
