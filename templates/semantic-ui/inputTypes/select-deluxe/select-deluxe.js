@@ -91,7 +91,7 @@ AutoForm.addInputType("select-deluxe", {
 
 var capitalizeFirstLetter = function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-}
+};
 
 var supportedItemUpgrades = {
   'div': 'DIV',
@@ -101,15 +101,18 @@ var supportedItemUpgrades = {
 };
 
 Template.afSelectDeluxe_semanticUI.helpers({
-  atts: function selectAttsAdjust() {
+  inputAttsAdjust: function inputAttsAdjust() {
     var atts = _.clone(this.atts);
 
-    delete atts["firstOption"];
-    delete atts["withSearch"];
+    delete atts.firstOption;
+    delete atts.withSearch;
 
     _.each(supportedItemUpgrades, function (options, type) {
       delete atts["with" + capitalizeFirstLetter(type)];
     });
+
+    var currentData = Template.currentData();
+    if ( currentData ) atts.value = currentData.value;
 
     return atts;
   },
@@ -134,7 +137,7 @@ Template.afSelectDeluxe_semanticUI.helpers({
         if ( this[className] ) {
           var elemContent, elemAttrs = { 'class': this[className] };
           if ( type === "image" && this[type + "Src"] ) {
-            elemAttrs['src'] = this[type + "Src"];
+            elemAttrs.src = this[type + "Src"];
           } else if ( this[type + "Content"] ) {
             elemContent = this[type + "Content"];
           }

@@ -1,7 +1,7 @@
 <template name="afSelectDeluxe_semanticUI">
   <div class="fluid field">
     <div {{dropdownAtts}}>
-      <input type="hidden" value="{{this.value}}" id="{{this._id}}" {{atts}}>
+      <input type="hidden" {{inputAttsAdjust}}>
       <i class="dropdown icon"></i>
       <div class="default text">{{firstOption}}</div>
       <div class="menu">
