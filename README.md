@@ -2,7 +2,7 @@
 
 Semantic-ui template for `aldeed:autoform` package.
 
-### Table of Contents
+## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -10,7 +10,7 @@ Semantic-ui template for `aldeed:autoform` package.
 - [License](#license)
 - [Contributing](#contributing)
 
-### Installation
+## Installation
 
 In your Meteor app directory:
 
@@ -18,7 +18,7 @@ In your Meteor app directory:
 $ meteor add fabienb4:autoform-semantic-ui
 ```
 
-### Usage
+## Usage
 
 In your code (client side) add:
 
@@ -30,16 +30,80 @@ Meteor.startup(function() {
 
 For more information on how to use autoform, please refer to [aldeed:autoform README](https://github.com/aldeed/meteor-autoform/blob/master/README.md).
 
-### New Input Types
+## New Input Types
 
-- `basic-select`: A basic select working without javascript (see: [basic-select](http://semantic-ui.com/collections/form.html#basic-select))
-- `select-search`: A searchable select (see: [search-selection-dropdown](http://semantic-ui.com/collections/form.html#search-selection-dropdown))
+##### `basic-select`: A basic select working without javascript (see: [basic-select](http://semantic-ui.com/collections/form.html#basic-select))
 
-### License
+```js
+{{> afQuickField name="items" type="basic-select" options=items}}
+```
+
+
+Format for `options`:
+
+```js
+items = [
+  { value: "1", label: "Item 1" },
+  { value: "2", label: "Item 2" }
+];
+```
+
+##### `select`: A javascript driven select (see: [selection](http://semantic-ui.com/modules/dropdown.html#selection))
+
+_If a field using a `select` is marked as optional in the schema, the dropdown will show a "Clear" button at the top of the list, allowing you to clear the currently selected value._
+
+```js
+// Simple
+{{> afQuickField name="items" options=items}}
+
+// Custom placeholder
+{{> afQuickField name="items" placeholder="Select an item" options=items}}
+
+// Search
+{{> afQuickField name="items" options=items search=true}}
+
+// Full text search
+{{> afQuickField name="items" options=items fullTextSearch=true}}
+```
+
+Possible formats for `options`:
+```js
+// Simple
+items = [
+  { value: "1", label: "Item 1" },
+  { value: "2", label: "Item 2" }
+];
+
+// With icons/flags
+items = [
+  { value: "1", label: "Item 1", icon: "file text icon" },
+  { value: "2", label: "Item 2", icon: "bz flag" }
+];
+
+// Groups with headers
+items = [
+  {
+    itemGroup: "Group one",
+    items: [
+      { value: "1", label: "Item 1" },
+      { value: "2", label: "Item 2" }
+    ]
+  },
+  {
+    itemGroup: "Group two",
+    items: [
+      { value: "3", label: "Item 3" },
+      { value: "4", label: "Item 4" }
+    ]
+  }
+]
+```
+
+## License
 
 MIT
 
-### Contributing
+## Contributing
 
 Anyone is welcome to contribute. Fork, make your changes (test them!), and then submit a pull request.
 

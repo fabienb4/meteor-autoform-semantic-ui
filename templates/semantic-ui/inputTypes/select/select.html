@@ -1,17 +1,38 @@
 <template name="afSelect_semanticUI">
   <div class="fluid field">
-    <select {{atts}}>
-      {{#each this.items}}
-        {{#if this.optgroup}}
-          <optgroup label="{{this.optgroup}}">
+    <div {{divAtts}}>
+      <input type="hidden" {{this.atts}} value="{{this.value}}">
+      {{#if this.value}}
+        <div class="text">{{this.value}}</div>
+      {{else}}
+        <div class="default text">{{placeholder}}</div>
+      {{/if}}
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        {{#unless required}}
+          <div class="ui fluid compact clear button"><i class="erase icon"></i> Clear</div>
+        {{/unless}}
+        {{#each this.items}}
+          {{#if this.itemGroup}}
+            <div class="header">{{this.itemGroup}}</div>
             {{#each this.items}}
-              <option {{afSelectOptionAtts}}>{{this.label}}</option>
+              <div {{itemAtts}} data-value="{{this.value}}">
+                {{#if this.icon}}
+                  <i class="{{this.icon}}"></i>
+                {{/if}}
+                {{this.label}}
+              </div>
             {{/each}}
-          </optgroup>
-        {{else}}
-          <option {{afSelectOptionAtts}}>{{this.label}}</option>
-        {{/if}}
-      {{/each}}
-    </select>
+          {{else}}
+            <div {{itemAtts}} data-value="{{this.value}}">
+              {{#if this.icon}}
+                <i class="{{this.icon}}"></i>
+              {{/if}}
+              {{this.label}}
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
   </div>
 </template>
