@@ -1,0 +1,28 @@
+<template name="afSelectDeluxe_semanticUI">
+  <div class="fluid field">
+    <div {{dropdownAtts}}>
+      <input type="hidden" {{inputAttsAdjust}}>
+      <i class="dropdown icon"></i>
+      <div class="default text">{{firstOption}}</div>
+      <div class="menu">
+        {{#each this.items}}
+          {{#if this.optgroup}}
+            <div class="header">{{this.optgroup}}</div>
+            {{#each this.items}}
+              <div {{itemAtts}}>
+                {{itemElementUpgrades}}
+                {{this.label}}
+              </div>
+            {{/each}}
+            <div class="divider"></div>
+          {{else}}
+            <div {{itemAtts}}>
+              {{itemElementUpgrades}}
+              {{this.label}}
+            </div>
+          {{/if}}
+        {{/each}}
+        </div>
+    </div>
+  </div>
+</template>
