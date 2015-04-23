@@ -3,7 +3,7 @@
     <div {{divAtts}}>
       <input type="hidden" {{this.atts}} value="{{this.value}}">
       {{#if this.value}}
-        <div class="text">{{this.value}}</div>
+        <div class="text">{{label}}</div>
       {{else}}
         <div class="default text">{{placeholder}}</div>
       {{/if}}

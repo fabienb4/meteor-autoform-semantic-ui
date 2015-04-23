@@ -4,9 +4,9 @@
   </h4>
   <div class="ui secondary bottom attached segment">
     {{#if afFieldIsInvalid name=this.atts.name}}
-    <div class="ui form error">
-      <div class="error message">{{{afFieldMessage name=this.atts.name}}}</div>
-    </div>
+      <div class="ui form error">
+        <div class="error message">{{{afFieldMessage name=this.atts.name}}}</div>
+      </div>
     {{/if}}
     {{#afEachArrayItem name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
       <div class="field autoform-array-item">
