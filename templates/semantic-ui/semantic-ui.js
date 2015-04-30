@@ -29,7 +29,7 @@ Template.autoForm.helpers({
       context.novalidate = "novalidate";
     }
 
-    context["class"] = "ui form";
+    context = AutoForm.Utility.addClass(context, "ui form");
 
     return _.omit(context,
       "schema",
