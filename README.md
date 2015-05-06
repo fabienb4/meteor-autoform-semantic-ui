@@ -7,6 +7,7 @@ Semantic-ui template for `aldeed:autoform` package.
 - [Installation](#installation)
 - [Usage](#usage)
 - [New Input Types](#new-input-types)
+- [Options](#options)
 - [License](#license)
 - [Contributing](#contributing)
 
@@ -97,6 +98,24 @@ items = [
     ]
   }
 ]
+```
+
+## Options
+
+#### Show errors in label
+
+A field's errors can be shown in the label of the field.
+
+In the form attributes (all fields in the form will show errors in labels):
+```js
+{{#autoform collection="Items" id="itemsInsertForm" type="insert" errorsInLabels=true}}
+  //...
+{{/autoform}}
+```
+
+In the field attributes (only this field will show errors in label):
+```js
+{{> afQuickField name="name" errorsInLabel=true}}
 ```
 
 ## License

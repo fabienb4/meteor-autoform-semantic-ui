@@ -7,7 +7,10 @@ Template.afFormGroup_semanticUI.helpers({
   },
   required: function bsFormGroupRequired() {
     if (this.required) {
-       return "required";
+      return "required";
     }
+  },
+  errorsInLabel: function() {
+    return AutoForm.findAttribute("errorsInLabels") || this.afFieldInputAtts.errorsInLabel;
   }
 });

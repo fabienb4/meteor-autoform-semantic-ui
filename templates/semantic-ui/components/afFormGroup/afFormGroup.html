@@ -7,9 +7,16 @@
         {{else}}
           {{afFieldLabelText name=this.name}}
         {{/if}}
+        {{#if errorsInLabel}}
+          {{#if afFieldIsInvalid name=this.name}}
+             ({{{afFieldMessage name=this.name}}})
+          {{/if}}
+        {{/if}}
       </label>
     {{/unless}}
     {{> afFieldInput this.afFieldInputAtts}}
-    <div class="error message">{{{afFieldMessage name=this.name}}}</div>
+    {{#unless errorsInLabel}}
+      <div class="error message">{{{afFieldMessage name=this.name}}}</div>
+    {{/unless}}
   </div>
 </template>
