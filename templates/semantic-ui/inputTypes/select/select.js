@@ -68,7 +68,7 @@ AutoForm.addInputType("select", {
 						label: subItem.label,
 						icon: subItem.icon || false,
 						value: subItem.value,
-						htmlAtts: _.omit(subItem, 'label', 'value'),
+						htmlAtts: _.extend({ class: "item" }, _.omit(subItem, "label", "value")),
 						// _id must be included because it is a special property that
 						// #each uses to track unique list items when adding and removing them
 						// See https://github.com/meteor/meteor/issues/2174
@@ -92,7 +92,7 @@ AutoForm.addInputType("select", {
 					label: item.label,
 					icon: item.icon || false,
 					value: item.value,
-					htmlAtts: _.omit(item, 'label', 'value'),
+					htmlAtts: _.extend({ class: "item" }, _.omit(item, "label", "value")),
 					// _id must be included because it is a special property that
 					// #each uses to track unique list items when adding and removing them
 					// See https://github.com/meteor/meteor/issues/2174
@@ -137,8 +137,8 @@ Template.afSelect_semanticUI.helpers({
 	required: function() {
 		return this.atts.required === "";
 	},
-	itemAtts: function() {
-		var atts = { class: "item" };
+	itemHtmlAtts: function() {
+		var atts = this.htmlAtts;
 
 		if (this.selected) {
 			// Add selected class

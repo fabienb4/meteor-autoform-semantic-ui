@@ -16,7 +16,7 @@
           {{#if this.itemGroup}}
             <div class="header">{{this.itemGroup}}</div>
             {{#each this.items}}
-              <div {{itemAtts}} data-value="{{this.value}}">
+              <div {{itemHtmlAtts}} data-value="{{this.value}}">
                 {{#if this.icon}}
                   <i class="{{this.icon}}"></i>
                 {{/if}}
@@ -24,7 +24,7 @@
               </div>
             {{/each}}
           {{else}}
-            <div {{itemAtts}} data-value="{{this.value}}">
+            <div {{itemHtmlAtts}} data-value="{{this.value}}">
               {{#if this.icon}}
                 <i class="{{this.icon}}"></i>
               {{/if}}
