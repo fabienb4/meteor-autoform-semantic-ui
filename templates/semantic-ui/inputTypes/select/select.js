@@ -138,7 +138,7 @@ Template.afSelect_semanticUI.helpers({
 		return this.atts.required === "";
 	},
 	itemHtmlAtts: function() {
-		var atts = this.htmlAtts;
+		var atts = _.clone(this.htmlAtts);
 
 		if (this.selected) {
 			// Add selected class
