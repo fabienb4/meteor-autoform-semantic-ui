@@ -33,6 +33,7 @@ Package.onUse(function(api) {
     'templates/semantic-ui/inputTypes/basic-select/basic-select.html',
     'templates/semantic-ui/inputTypes/basic-select/basic-select.js',
     'templates/semantic-ui/inputTypes/boolean-checkbox/boolean-checkbox.html',
+    'templates/semantic-ui/inputTypes/boolean-checkbox/boolean-checkbox.js',
     'templates/semantic-ui/inputTypes/button/button.html',
     'templates/semantic-ui/inputTypes/color/color.html',
     'templates/semantic-ui/inputTypes/date/date.html',
