@@ -126,6 +126,20 @@ In the field attributes (only this field will show errors in label):
 {{> afQuickField name="name" errorsInLabel=true}}
 ```
 
+#### `boolean-checkbox` types
+
+##### `slider` (see: [slider](http://semantic-ui.com/modules/checkbox.html#slider))
+
+```js
+{{> afQuickField name="isEnabled" checkboxType="slider"}}
+```
+
+##### `toggle` (see: [toggle](http://semantic-ui.com/modules/checkbox.html#toggle))
+
+```js
+{{> afQuickField name="isEnabled" checkboxType="toggle"}}
+```
+
 ## License
 
 MIT
