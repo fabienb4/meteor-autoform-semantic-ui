@@ -1,6 +1,6 @@
 <template name="afCheckbox_semanticUI">
-  <div class="ui checkbox">
-    <input type="checkbox" value="{{this.value}}" {{atts}} />
+  <div class="ui {{checkboxType}}checkbox">
+    <input type="checkbox" value="{{this.value}}" {{itemAtts}} />
     <label>{{afFieldLabelText name=this.name}}</label>
   </div>
 </template>
