@@ -108,6 +108,26 @@ items = [
 ]
 ```
 
+### Boolean (checkbox) sub-types
+
+##### `checkbox` (default): A standard checkbox (see: [checkbox](http://semantic-ui.com/modules/checkbox.html#checkbox))
+
+```js
+{{> afQuickField name="isEnabled"}}
+```
+
+##### `slider`: A checkbox can be formatted to emphasize the current selection state (see: [slider](http://semantic-ui.com/modules/checkbox.html#slider))
+
+```js
+{{> afQuickField name="isEnabled" checkbox-type="slider"}}
+```
+
+##### `toggle`: A checkbox can be formatted to show an on or off choice (see: [toggle](http://semantic-ui.com/modules/checkbox.html#toggle))
+
+```js
+{{> afQuickField name="isEnabled" checkbox-type="toggle"}}
+```
+
 ## Options
 
 #### Show errors in label
