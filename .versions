@@ -1,4 +1,4 @@
-aldeed:autoform@5.1.2
+aldeed:autoform@5.3.0
 aldeed:simple-schema@1.1.0
 base64@1.0.3
 blaze@2.1.2
@@ -8,7 +8,7 @@ check@1.0.5
 ddp@1.1.0
 deps@1.0.7
 ejson@1.0.6
-fabienb4:autoform-semantic-ui@0.3.7
+fabienb4:autoform-semantic-ui@0.4.0
 geojson-utils@1.0.3
 html-tools@1.0.4
 htmljs@1.0.4
