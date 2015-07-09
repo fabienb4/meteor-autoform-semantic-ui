@@ -151,7 +151,7 @@ Template.afSelect_semanticUI.helpers({
 
 Template.afSelect_semanticUI.events({
 	"click .ui.clear.button": function(event) {
-		$(event.target).closest(".ui.dropdown").dropdown("clear");
+		$(event.target).closest(".ui.dropdown").dropdown("clear").dropdown("hide");
 	}
 });
 
