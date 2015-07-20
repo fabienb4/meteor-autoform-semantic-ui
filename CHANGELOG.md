@@ -5,6 +5,10 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
+### 0.4.4
+
+- Updated autoform dependency to 5.3.2.
+
 ### 0.4.3
 
 - Fixed issue with corner label size due to changes in Semantic UI 2.0
