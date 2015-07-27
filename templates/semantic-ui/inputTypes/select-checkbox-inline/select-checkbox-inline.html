@@ -1,0 +1,12 @@
+<template name="afCheckboxGroupInline_semanticUI">
+  <div class="inline fields" {{dsk}}>
+  {{#each this.items}}
+    <div class="field">
+      <div class="ui checkbox">
+        <input type="checkbox" value="{{this.value}}" {{atts}} />
+        <label>{{label}}</label>
+      </div>
+    </div>
+  {{/each}}
+  </div>
+</template>
