@@ -5,6 +5,11 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
+### 0.4.5
+
+- Updated checked status for select & checkbox.
+- Added `select-checkbox-inline` & `select-radio-inline` input types.
+
 ### 0.4.4
 
 - Updated autoform dependency to 5.3.2.
