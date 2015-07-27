@@ -3,7 +3,7 @@ Template.afCheckboxGroup_semanticUI.helpers({
     var atts = _.clone(this.atts);
 
     if (this.selected) {
-      atts.checked = "";
+      atts.checked = "checked";
     }
 
     // remove data-schema-key attribute because we put it
