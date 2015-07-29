@@ -1,38 +1,36 @@
 <template name="afSelect_semanticUI">
-  <div class="fluid field">
-    <div {{divAtts}}>
-      <input type="hidden" {{this.atts}} value="{{this.value}}">
-      {{#if this.value}}
-        <div class="text">{{label}}</div>
-      {{else}}
-        <div class="default text">{{placeholder}}</div>
-      {{/if}}
-      <i class="dropdown icon"></i>
-      <div class="menu">
-        {{#unless required}}
-          <div class="ui fluid compact clear button"><i class="erase icon"></i></div>
-        {{/unless}}
-        {{#each this.items}}
-          {{#if this.itemGroup}}
-            <div class="header">{{this.itemGroup}}</div>
-            {{#each this.items}}
-              <div {{itemHtmlAtts}} data-value="{{this.value}}">
-                {{#if this.icon}}
-                  <i class="{{this.icon}}"></i>
-                {{/if}}
-                {{this.label}}
-              </div>
-            {{/each}}
-          {{else}}
+  <div {{divAtts}}>
+    <input type="hidden" {{this.atts}} value="{{this.value}}">
+    {{#if this.value}}
+      <div class="text">{{label}}</div>
+    {{else}}
+      <div class="default text">{{placeholder}}</div>
+    {{/if}}
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      {{#unless required}}
+        <div class="ui fluid compact clear button"><i class="erase icon"></i></div>
+      {{/unless}}
+      {{#each this.items}}
+        {{#if this.itemGroup}}
+          <div class="header">{{this.itemGroup}}</div>
+          {{#each this.items}}
             <div {{itemHtmlAtts}} data-value="{{this.value}}">
               {{#if this.icon}}
                 <i class="{{this.icon}}"></i>
               {{/if}}
               {{this.label}}
             </div>
-          {{/if}}
-        {{/each}}
-      </div>
+          {{/each}}
+        {{else}}
+          <div {{itemHtmlAtts}} data-value="{{this.value}}">
+            {{#if this.icon}}
+              <i class="{{this.icon}}"></i>
+            {{/if}}
+            {{this.label}}
+          </div>
+        {{/if}}
+      {{/each}}
     </div>
   </div>
 </template>

@@ -156,7 +156,7 @@ Template.afSelect_semanticUI.events({
 });
 
 Template.afSelect_semanticUI.onRendered(function() {
-  $(this.firstNode).find(".ui.dropdown").dropdown({
+  $(this.firstNode).dropdown({
 		fullTextSearch: this.data.atts.fullTextSearch || false
 	});
 });
