@@ -2,11 +2,7 @@
   <div class="fluid field">
     <div {{divAtts}}>
       <input type="hidden" {{this.atts}} value="{{this.value}}">
-      {{#if this.value}}
-        <div class="text">{{label}}</div>
-      {{else}}
-        <div class="default text">{{placeholder}}</div>
-      {{/if}}
+      <div class="default text">{{placeholder}}</div>
       <i class="dropdown icon"></i>
       <div class="menu">
         {{#unless required}}
