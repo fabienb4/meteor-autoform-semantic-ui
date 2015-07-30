@@ -23,15 +23,13 @@ Template.registerHelper("attsPlusButtonClass", function attsPlusButtonClass() {
 
 Template.autoForm.helpers({
   atts: function autoFormTplAtts() {
-    var context = _.clone(this);
-
-    if (context.validation !== "browser" && !context.novalidate) {
-      context.novalidate = "novalidate";
-    }
+    // After removing all of the props we know about, everything else should
+    // become a form attribute unless it's an array or object.
+    var val, htmlAttributes = {}, context = this;
 
     context = AutoForm.Utility.addClass(context, "ui form");
 
-    return _.omit(context,
+    var removeProps = [
       "schema",
       "collection",
       "validation",
@@ -40,12 +38,41 @@ Template.autoForm.helpers({
       "type",
       "template",
       "autosave",
+      "autosaveOnKeyup",
       "meteormethod",
       "filter",
       "autoConvert",
       "removeEmptyStrings",
-      "trimStrings",
-      "_resolvedSchema"
-    );
+      "trimStrings"
+    ];
+
+    // Filter out any attributes that have a component prefix
+    function hasComponentPrefix(prop) {
+      return _.any(AutoForm.Utility.componentTypeList, function (componentType) {
+        return prop.indexOf(componentType + "-") === 0;
+      });
+    }
+
+    // Filter out arrays and objects, which are obviously not meant to be
+    // HTML attributes.
+    for (var prop in context) {
+      if (context.hasOwnProperty(prop) &&
+          ! _.contains(removeProps, prop) &&
+          ! hasComponentPrefix(prop)) {
+        val = context[prop];
+
+        if (! _.isArray(val) && ! _.isObject(val)) {
+          htmlAttributes[prop] = val;
+        }
+      }
+    }
+
+    // By default, we add the `novalidate="novalidate"` attribute to our form,
+    // unless the user passes `validation="browser"`.
+    if (this.validation !== "browser" && ! htmlAttributes.novalidate) {
+      htmlAttributes.novalidate = "novalidate";
+    }
+
+    return htmlAttributes;
   }
 });
