@@ -49,7 +49,7 @@ Template.autoForm.helpers({
     // Filter out any attributes that have a component prefix
     function hasComponentPrefix(prop) {
       return _.any(AutoForm.Utility.componentTypeList, function (componentType) {
-        return prop.indexOf(componentType + '-') === 0;
+        return prop.indexOf(componentType + "-") === 0;
       });
     }
 
@@ -57,10 +57,11 @@ Template.autoForm.helpers({
     // HTML attributes.
     for (var prop in context) {
       if (context.hasOwnProperty(prop) &&
-          !_.contains(removeProps, prop) &&
-          !hasComponentPrefix(prop)) {
+          ! _.contains(removeProps, prop) &&
+          ! hasComponentPrefix(prop)) {
         val = context[prop];
-        if (!_.isArray(val) && !_.isObject(val)) {
+
+        if (! _.isArray(val) && ! _.isObject(val)) {
           htmlAttributes[prop] = val;
         }
       }
@@ -68,7 +69,7 @@ Template.autoForm.helpers({
 
     // By default, we add the `novalidate="novalidate"` attribute to our form,
     // unless the user passes `validation="browser"`.
-    if (this.validation !== "browser" && !htmlAttributes.novalidate) {
+    if (this.validation !== "browser" && ! htmlAttributes.novalidate) {
       htmlAttributes.novalidate = "novalidate";
     }
 
