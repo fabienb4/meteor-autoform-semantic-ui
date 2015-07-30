@@ -1,6 +1,6 @@
 Package.describe({
   name: 'fabienb4:autoform-semantic-ui',
-  version: '0.4.5',
+  version: '0.4.6',
   // Brief, one-line summary of the package.
   summary: 'Semantic-ui template for aldeed:autoform package.',
   // URL to the Git repository containing the source code for this package.

@@ -5,6 +5,11 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
+### 0.4.6
+
+- Patch semantic-ui.js with latest changes from autoForm.js.
+- Placeholder should return when clearing an optional field that had an existing value.
+
 ### 0.4.5
 
 - Updated checked status for select & checkbox.
