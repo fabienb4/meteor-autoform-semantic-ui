@@ -126,14 +126,6 @@ Template.afSelect_semanticUI.helpers({
 	placeholder: function() {
 		return this.atts.placeholder || "(Select One)";
 	},
-	label: function() {
-		var value       = this.value;
-		var currentItem = _.find(this.items, function(item) {
-			return item.value === value;
-		});
-
-		return currentItem.label;
-	},
 	required: function() {
 		return this.atts.required === "";
 	},
