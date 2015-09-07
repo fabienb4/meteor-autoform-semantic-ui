@@ -11,5 +11,5 @@ Template.afRadio_semanticUI.helpers({
 });
 
 Template.afRadio_semanticUI.onRendered(function() {
-  $(this.firstNode).checkbox();
+  this.$(this.firstNode).checkbox();
 });
