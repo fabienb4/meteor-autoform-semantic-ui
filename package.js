@@ -15,7 +15,7 @@ Package.onUse(function(api) {
 
   api.use(['templating', 'underscore'], 'client');
 
-  api.use('aldeed:autoform@5.3.2', 'client');
+  api.use('aldeed:autoform@5.5.1', 'client');
 
   api.addFiles([
     // semantic-ui Template - General
