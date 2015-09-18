@@ -1,18 +1,29 @@
 <template name="quickForm_semanticUI">
-  <div class="ui form">
-    {{#autoForm this.qfAutoFormContext}}
+  {{#autoForm this.qfAutoFormContext}}
+
+    {{#with grouplessFields}}
       {{> afQuickFields quickFieldsAtts}}
-      {{#if qfShouldRenderButton}}
-        <div class="field">
-          <button type="submit" {{submitButtonAtts}}>
-          {{#with ../atts.buttonContent}}
-            {{this}}
-          {{else}}
-            Submit
-          {{/with}}
-          </button>
-        </div>
-      {{/if}}
-    {{/autoForm}}
-  </div>
+    {{/with}}
+
+    {{#each fieldGroups}}
+      <div class="ui segment af-fieldGroup">
+        {{#with fieldGroupLabel}}
+          <div class="ui top attached label af-fieldGroup-heading">{{this}}</div>
+        {{/with}}
+        {{> afQuickFields quickFieldsAtts}}
+      </div>
+    {{/each}}
+
+    {{#if qfShouldRenderButton}}
+      <div class="field">
+        <button type="submit" {{submitButtonAtts}}>
+        {{#with ../atts.buttonContent}}
+          {{this}}
+        {{else}}
+          Submit
+        {{/with}}
+        </button>
+      </div>
+    {{/if}}
+  {{/autoForm}}
 </template>
