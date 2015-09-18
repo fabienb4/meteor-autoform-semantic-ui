@@ -5,6 +5,24 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
+### 0.5.0
+
+- Updated rendering according to changes in semantic-ui.
+  - Errors:
+    - Now display properly in a label under each field.
+    - `errorsInLabel` is no longer used.
+  - Arrays:
+    - Fixed fields width.
+    - Fixed corner labels positioning.
+- Added support for grouping fields (See aldeed/autoform README).
+  - Semantic-UI implementation uses `ui segment` instead of `fieldset` for better rendering.
+- Updated autoform dependency to 5.5.1.
+- Removed useless `fluid field` wrapper. Closes #18
+
+### 0.4.6
+
+- Optimized selectors.
+
 ### 0.4.6
 
 - Patch semantic-ui.js with latest changes from autoForm.js.

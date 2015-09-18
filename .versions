@@ -1,4 +1,4 @@
-aldeed:autoform@5.3.2
+aldeed:autoform@5.5.1
 aldeed:simple-schema@1.1.0
 base64@1.0.3
 blaze@2.1.2
@@ -8,7 +8,7 @@ check@1.0.5
 ddp@1.1.0
 deps@1.0.7
 ejson@1.0.6
-fabienb4:autoform-semantic-ui@0.4.7
+fabienb4:autoform-semantic-ui@0.5.0
 geojson-utils@1.0.3
 html-tools@1.0.4
 htmljs@1.0.4
@@ -20,7 +20,7 @@ logging@1.0.7
 meteor@1.1.6
 minifiers@1.1.5
 minimongo@1.0.8
-momentjs:moment@2.8.4
+momentjs:moment@2.10.6
 observe-sequence@1.0.6
 ordered-dict@1.0.3
 random@1.0.3
