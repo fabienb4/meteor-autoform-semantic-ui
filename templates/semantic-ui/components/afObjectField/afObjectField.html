@@ -4,7 +4,9 @@
   {{/with}}
   <div class="ui secondary bottom attached segment form error">
     {{#if afFieldIsInvalid name=this.name}}
-      <div class="error message">{{{afFieldMessage name=this.name}}}</div>
+      <div class="ui pointing red basic label">
+        {{{afFieldMessage name=this.name}}}
+      </div>
     {{/if}}
     {{> afQuickFields quickFieldsAtts}}
   </div>

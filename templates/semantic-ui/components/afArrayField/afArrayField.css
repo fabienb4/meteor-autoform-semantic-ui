@@ -1,7 +1,5 @@
-.autoform-array-item > .input .ui.corner.label {
-  top: 0;
-  right: 0;
-  left: auto;
+.autoform-array-item {
+  position: relative;
 }
 
 .autoform-remove-item {

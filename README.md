@@ -110,22 +110,6 @@ items = [
 
 ## Options
 
-#### Show errors in label
-
-A field's errors can be shown in the label of the field.
-
-In the form attributes (all fields in the form will show errors in labels):
-```js
-{{#autoForm collection="Items" id="itemsInsertForm" type="insert" errorsInLabels=true}}
-  //...
-{{/autoForm}}
-```
-
-In the field attributes (only this field will show errors in label):
-```js
-{{> afQuickField name="name" errorsInLabel=true}}
-```
-
 #### `boolean-checkbox` types
 
 ##### `slider` (see: [slider](http://semantic-ui.com/modules/checkbox.html#slider))

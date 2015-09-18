@@ -4,20 +4,18 @@
   </h4>
   <div class="ui secondary bottom attached segment">
     {{#if afFieldIsInvalid name=this.atts.name}}
-      <div class="ui form error">
-        <div class="error message">{{{afFieldMessage name=this.atts.name}}}</div>
+      <div class="ui pointing red basic label">
+        {{{afFieldMessage name=this.atts.name}}}
       </div>
     {{/if}}
     {{#afEachArrayItem name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
       <div class="field autoform-array-item">
-        <div class="ui input">
-          {{#if afArrayFieldHasMoreThanMinimum name=../atts.name minCount=../atts.minCount maxCount=../atts.maxCount}}
-            <div class="ui mini red corner label autoform-remove-item">
-              <i class="icon minus"></i>
-            </div>
-          {{/if}}
-          {{> afQuickField name=this.name label=false options=afOptionsFromSchema}}
-        </div>
+        {{#if afArrayFieldHasMoreThanMinimum name=../atts.name minCount=../atts.minCount maxCount=../atts.maxCount}}
+          <div class="ui mini red corner label autoform-remove-item">
+            <i class="icon minus"></i>
+          </div>
+        {{/if}}
+        {{> afQuickField name=this.name label=false options=afOptionsFromSchema}}
       </div>
     {{/afEachArrayItem}}
     {{#if afArrayFieldHasLessThanMaximum name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}

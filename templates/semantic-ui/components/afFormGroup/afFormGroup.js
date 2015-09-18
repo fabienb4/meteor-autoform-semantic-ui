@@ -9,8 +9,5 @@ Template.afFormGroup_semanticUI.helpers({
     if (this.required) {
       return "required";
     }
-  },
-  errorsInLabel: function() {
-    return AutoForm.findAttribute("errorsInLabels") || this.afFieldInputAtts.errorsInLabel;
   }
 });
