@@ -5,6 +5,13 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
+### 0.6.0 [BREAKING]
+
+- Updated for compatibility Meteor 1.2 (_no longer usable with Meteor < 1.2_).
+  - Make use of ES6.
+- Major code cleanup.
+- Changed quickForm's submit, submit, reset & button colors (green, green, grey & grey, respectively).
+
 ### 0.5.0
 
 - Updated rendering according to changes in semantic-ui.
