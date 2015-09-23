@@ -1,6 +1,6 @@
 Template.afRadio_semanticUI.helpers({
-  atts: function selectedAttsAdjust() {
-    var atts = _.clone(this.atts);
+  atts() {
+    let atts = _.clone(this.atts);
 
     if (this.selected) {
       atts.checked = "";

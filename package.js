@@ -11,9 +11,9 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.1.0.2');
+  api.versionsFrom('1.2.0.1');
 
-  api.use(['templating', 'underscore'], 'client');
+  api.use(['ecmascript', 'templating', 'underscore', 'jquery'], 'client');
 
   api.use('aldeed:autoform@5.5.1', 'client');
 
@@ -35,6 +35,7 @@ Package.onUse(function(api) {
     'templates/semantic-ui/inputTypes/boolean-checkbox/boolean-checkbox.html',
     'templates/semantic-ui/inputTypes/boolean-checkbox/boolean-checkbox.js',
     'templates/semantic-ui/inputTypes/button/button.html',
+    'templates/semantic-ui/inputTypes/button/button.js',
     'templates/semantic-ui/inputTypes/color/color.html',
     'templates/semantic-ui/inputTypes/date/date.html',
     'templates/semantic-ui/inputTypes/datetime/datetime.html',
@@ -47,6 +48,7 @@ Package.onUse(function(api) {
     'templates/semantic-ui/inputTypes/radio/radio.js',
     'templates/semantic-ui/inputTypes/range/range.html',
     'templates/semantic-ui/inputTypes/reset/reset.html',
+    'templates/semantic-ui/inputTypes/reset/reset.js',
     'templates/semantic-ui/inputTypes/search/search.html',
     'templates/semantic-ui/inputTypes/select/select.html',
     'templates/semantic-ui/inputTypes/select/select.js',
@@ -59,6 +61,7 @@ Package.onUse(function(api) {
     'templates/semantic-ui/inputTypes/select-radio-inline/select-radio-inline.html',
     'templates/semantic-ui/inputTypes/select-radio-inline/select-radio-inline.js',
     'templates/semantic-ui/inputTypes/submit/submit.html',
+    'templates/semantic-ui/inputTypes/submit/submit.js',
     'templates/semantic-ui/inputTypes/tel/tel.html',
     'templates/semantic-ui/inputTypes/text/text.html',
     'templates/semantic-ui/inputTypes/textarea/textarea.html',

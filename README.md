@@ -18,14 +18,14 @@ Semantic-ui template for `aldeed:autoform` package.
 In your Meteor app directory:
 
 ```
-$ meteor add fabienb4:autoform-semantic-ui
+$ meteor add aldeed:autoform fabienb4:autoform-semantic-ui
 ```
 
 ## Usage
 
 In your code (client side) add:
 ```js
-Meteor.startup(function() {
+Meteor.startup(() => {
   AutoForm.setDefaultTemplate("semanticUI");
 });
 ```

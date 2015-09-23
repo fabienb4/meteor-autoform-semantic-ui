@@ -1,35 +1,14 @@
 /* global AutoForm */
 
-/*
- * Template helpers for "semantic-ui" templates
- */
-Template.registerHelper("attsPlusFluidClass", function attsPlusFluidClass() {
-  var atts = _.clone(this.atts);
-
-  // Add semantic-ui class
-  atts = AutoForm.Utility.addClass(atts, "fluid");
-
-  return atts;
-});
-
-Template.registerHelper("attsPlusButtonClass", function attsPlusButtonClass() {
-  var atts = _.clone(this.atts);
-
-  // Add semantic-ui class
-  atts = AutoForm.Utility.addClass(atts, "ui blue button");
-
-  return atts;
-});
-
 Template.autoForm.helpers({
-  atts: function autoFormTplAtts() {
+  atts() {
     // After removing all of the props we know about, everything else should
     // become a form attribute unless it's an array or object.
-    var val, htmlAttributes = {}, context = this;
+    let val, htmlAttributes = {}, context = this;
 
     context = AutoForm.Utility.addClass(context, "ui form");
 
-    var removeProps = [
+    let removeProps = [
       "schema",
       "collection",
       "validation",
@@ -48,16 +27,16 @@ Template.autoForm.helpers({
 
     // Filter out any attributes that have a component prefix
     function hasComponentPrefix(prop) {
-      return _.any(AutoForm.Utility.componentTypeList, function (componentType) {
-        return prop.indexOf(componentType + "-") === 0;
-      });
+      return _.any(
+        AutoForm.Utility.componentTypeList,
+        componentType => prop.indexOf(componentType + "-") === 0
+      );
     }
 
     // Filter out arrays and objects, which are obviously not meant to be
     // HTML attributes.
-    for (var prop in context) {
-      if (context.hasOwnProperty(prop) &&
-          ! _.contains(removeProps, prop) &&
+    for (let prop in context) {
+      if (context.hasOwnProperty(prop) && ! _.contains(removeProps, prop) &&
           ! hasComponentPrefix(prop)) {
         val = context[prop];
 

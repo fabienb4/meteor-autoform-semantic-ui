@@ -1,9 +1,9 @@
 Template.quickForm_semanticUI.helpers({
-  fieldGroupLabel: function () {
-    var name = this.name;
+  fieldGroupLabel() {
+    let name = this.name;
 
     // if field group name is of the form XY_abcde where "XY" is a number, remove prefix
-    if (! isNaN(parseInt(name.substr(0,2), 10)) && name.charAt(2) === "_") {
+    if (! Number.isNaN(parseInt(name.substr(0,2), 10)) && name.charAt(2) === "_") {
       name = name.substr(3);
     }
 
@@ -15,25 +15,25 @@ Template.quickForm_semanticUI.helpers({
       return name.charAt(0).toUpperCase() + name.slice(1);
     }
   },
-  quickFieldsAtts: function () {
+  quickFieldsAtts() {
     // These are the quickForm attributes that we want to forward to
     // the afQuickFields component.
     return _.pick(this.atts, "id-prefix");
   },
-  submitButtonAtts: function bsQuickFormSubmitButtonAtts() {
-    var qfAtts = this.atts;
-    var atts = {};
+  submitButtonAtts() {
+    let qfAtts = this.atts;
+    let atts = {};
 
     if (typeof qfAtts.buttonClasses === "string") {
       atts["class"] = qfAtts.buttonClasses;
     } else {
-      atts["class"] = "ui blue submit button";
+      atts["class"] = "ui positive submit button";
     }
 
     return atts;
   },
-  qfAutoFormContext: function() {
-    var ctx = _.clone(this.qfAutoFormContext || {});
+  qfAutoFormContext() {
+    let ctx = _.clone(this.qfAutoFormContext || {});
 
     ctx = AutoForm.Utility.addClass(ctx, "ui form");
 

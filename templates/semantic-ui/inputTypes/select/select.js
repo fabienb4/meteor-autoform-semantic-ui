@@ -1,97 +1,61 @@
 AutoForm.addInputType("select", {
 	template: "afSelect",
-	valueOut: function () {
+	valueOut() {
 		return this.val();
 	},
 	valueConverters: {
-		"stringArray": function (val) {
-			if (typeof val === "string") {
-				val = val.split(",");
-				return _.map(val, function (item) {
-					return $.trim(item);
-				});
-			}
-			return val;
-		},
-		"number": AutoForm.Utility.stringToNumber,
-		"numberArray": function (val) {
-			if (typeof val === "string") {
-				val = val.split(",");
-				return _.map(val, function (item) {
-					item = $.trim(item);
-					return AutoForm.Utility.stringToNumber(item);
-				});
-			}
-			return val;
-		},
-		"boolean": AutoForm.Utility.stringToBool,
-		"booleanArray": function (val) {
-			if (typeof val === "string") {
-				val = val.split(",");
-				return _.map(val, function (item) {
-					item = $.trim(item);
-					return AutoForm.Utility.stringToBool(item);
-				});
-			}
-			return val;
-		},
-		"date": AutoForm.Utility.stringToDate,
-		"dateArray": function (val) {
-			if (typeof val === "string") {
-				val = val.split(",");
-				return _.map(val, function (item) {
-					item = $.trim(item);
-					return AutoForm.Utility.stringToDate(item);
-				});
-			}
-			return val;
-		}
+    stringArray:  AutoForm.valueConverters.stringToStringArray,
+    number:       AutoForm.valueConverters.stringToNumber,
+    numberArray:  AutoForm.valueConverters.stringToNumberArray,
+    boolean:      AutoForm.valueConverters.stringToBoolean,
+    booleanArray: AutoForm.valueConverters.stringToBooleanArray,
+    date:         AutoForm.valueConverters.stringToDate,
+    dateArray:    AutoForm.valueConverters.stringToDateArray
 	},
-	contextAdjust: function (context) {
+	contextAdjust(context) {
 		// can fix issues with some browsers selecting the firstOption instead of the selected option
 		context.atts.autocomplete = "off";
 
 		// delete eventual option used in other templates
 		delete context.atts.firstOption;
 
-		var itemAtts = _.omit(context.atts, "placeholder");
+		let itemAtts = _.omit(context.atts, "placeholder");
 
 		// build items list
 		context.items = [];
 
 		// Add all defined options
-		_.each(context.selectOptions, function(item) {
+		_.each(context.selectOptions, item => {
 			if (item.itemGroup) {
-				var subItems = _.map(item.items, function(subItem) {
-					return {
-						name: context.name,
-						label: subItem.label,
-						icon: subItem.icon || false,
-						value: subItem.value,
-						htmlAtts: _.extend({ class: "item" }, _.omit(subItem, "label", "value")),
-						// _id must be included because it is a special property that
-						// #each uses to track unique list items when adding and removing them
-						// See https://github.com/meteor/meteor/issues/2174
-						//
-						// The toString() is necessary because otherwise Spacebars evaluates
-						// any string to 1 if the other values are numbers, and then considers
-						// that a duplicate.
-						// See https://github.com/aldeed/meteor-autoform/issues/656
-						_id: subItem.value.toString(),
-						selected: (subItem.value === context.value),
-						atts: itemAtts
-					};
-				});
+				let subItems = _.map(item.items, subItem => ({
+					name:     context.name,
+					label:    subItem.label,
+					icon:     subItem.icon || false,
+					value:    subItem.value,
+					htmlAtts: _.extend({ class: "item" }, _.omit(subItem, "label", "value")),
+					// _id must be included because it is a special property that
+					// #each uses to track unique list items when adding and removing them
+					// See https://github.com/meteor/meteor/issues/2174
+					//
+					// The toString() is necessary because otherwise Spacebars evaluates
+					// any string to 1 if the other values are numbers, and then considers
+					// that a duplicate.
+					// See https://github.com/aldeed/meteor-autoform/issues/656
+					_id:      subItem.value.toString(),
+					selected: (subItem.value === context.value),
+					atts:     itemAtts
+				}));
+
 				context.items.push({
 					itemGroup: item.itemGroup,
-					items: subItems
+					items:     subItems
 				});
 			} else {
 				context.items.push({
-					name: context.name,
-					label: item.label,
-					icon: item.icon || false,
-					value: item.value,
+					name:     context.name,
+					label:    item.label,
+					icon:     item.icon || false,
+					value:    item.value,
 					htmlAtts: _.extend({ class: "item" }, _.omit(item, "label", "value")),
 					// _id must be included because it is a special property that
 					// #each uses to track unique list items when adding and removing them
@@ -101,9 +65,9 @@ AutoForm.addInputType("select", {
 					// any string to 1 if the other values are numbers, and then considers
 					// that a duplicate.
 					// See https://github.com/aldeed/meteor-autoform/issues/656
-					_id: item.value.toString(),
+					_id:      item.value.toString(),
 					selected: (item.value === context.value),
-					atts: itemAtts
+					atts:     itemAtts
 				});
 			}
 		});
@@ -113,27 +77,27 @@ AutoForm.addInputType("select", {
 });
 
 Template.afSelect_semanticUI.helpers({
-	divAtts: function() {
-		var atts = { class: "ui fluid selection dropdown" };
+	divAtts() {
+		let atts = { class: "ui fluid selection dropdown" };
 
+		// Add search class
 		if (this.atts.search || this.atts.fullTextSearch) {
-			// Add search class
 			atts = AutoForm.Utility.addClass(atts, "search");
 		}
 
 		return atts;
 	},
-	placeholder: function() {
+	placeholder() {
 		return this.atts.placeholder || "(Select One)";
 	},
-	required: function() {
+	required() {
 		return this.atts.required === "";
 	},
-	itemHtmlAtts: function() {
-		var atts = _.clone(this.htmlAtts);
+	itemHtmlAtts() {
+		let atts = _.clone(this.htmlAtts);
 
+		// Add selected class
 		if (this.selected) {
-			// Add selected class
 			atts = AutoForm.Utility.addClass(atts, "active selected");
 		}
 
@@ -142,13 +106,13 @@ Template.afSelect_semanticUI.helpers({
 });
 
 Template.afSelect_semanticUI.events({
-	"click .ui.clear.button": function(event) {
+	"click .ui.clear.button"(event) {
 		$(event.target).closest(".ui.dropdown").dropdown("clear").dropdown("hide");
 	}
 });
 
 Template.afSelect_semanticUI.onRendered(function() {
-  this.$(this.firstNode).find(".ui.dropdown").dropdown({
+  this.$(this.firstNode).dropdown({
 		fullTextSearch: this.data.atts.fullTextSearch || false
 	});
 });

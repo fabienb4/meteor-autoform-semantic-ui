@@ -1,6 +1,6 @@
 Template.afRadioGroup_semanticUI.helpers({
-  atts: function selectedAttsAdjust() {
-    var atts = _.clone(this.atts);
+  atts() {
+    let atts = _.clone(this.atts);
 
     if (this.selected) {
       atts.checked = "checked";
@@ -12,7 +12,7 @@ Template.afRadioGroup_semanticUI.helpers({
 
     return atts;
   },
-  dsk: function dsk() {
+  dsk() {
     return {
       "data-schema-key": this.atts["data-schema-key"]
     };

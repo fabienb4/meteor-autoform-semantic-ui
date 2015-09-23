@@ -3,7 +3,7 @@ Template.afCheckbox_semanticUI.onRendered(function() {
 });
 
 Template.afCheckbox_semanticUI.helpers({
-  inputAtts: function () {
+  inputAtts() {
     return _.omit(this.atts, "checkboxType");
   }
 });
