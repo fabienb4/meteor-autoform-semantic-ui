@@ -121,6 +121,10 @@ Template.afSelect_semanticUI.helpers({
 			atts = AutoForm.Utility.addClass(atts, "search");
 		}
 
+		if (this.atts.multiple) {
+			atts = AutoForm.Utility.addClass(atts, "multiple");
+		}
+
 		return atts;
 	},
 	placeholder: function() {
@@ -148,7 +152,10 @@ Template.afSelect_semanticUI.events({
 });
 
 Template.afSelect_semanticUI.onRendered(function() {
-  this.$(this.firstNode).find(".ui.dropdown").dropdown({
-		fullTextSearch: this.data.atts.fullTextSearch || false
+  this.$(this.firstNode).closest(".ui.dropdown").dropdown({
+		fullTextSearch: this.data.atts.fullTextSearch || false,
+		allowAdditions: this.data.atts.allowAdditions || false,
+		maxSelections: this.data.atts.maxSelections || false,
+		useLabels: this.data.atts.useLabels || false,
 	});
 });

@@ -43,7 +43,10 @@ Template.autoForm.helpers({
       "filter",
       "autoConvert",
       "removeEmptyStrings",
-      "trimStrings"
+      "trimStrings",
+      "allowAdditions",
+      "multiple",
+      "maxSelections"
     ];
 
     // Filter out any attributes that have a component prefix
