@@ -5,6 +5,17 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
+### 0.6.2
+
+- Additional fixes/improvements after 0.6.x.
+ - Fixed `select`'s categories parsing.
+ - Fixed `basic-select` optgroups parsing.
+ - Improved item/subitems for `select` & `basic-select` parsing.
+ - `select` items now support "label", "description" & "selection" (see README).
+ - Updated README.
+
+Thanks to @abernix for his help.
+
 ### 0.6.1
 
 - Updated `select` to support new features.
