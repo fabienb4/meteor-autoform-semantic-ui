@@ -42,49 +42,35 @@ AutoForm.addInputType("basic-select", {
       });
     }
 
+    let buildOption = option => ({
+      name:     context.name,
+      label:    option.label,
+      value:    option.value,
+      htmlAtts: _.omit(option, "label", "value"),
+      // _id must be included because it is a special property that
+      // #each uses to track unique list items when adding and removing them
+      // See https://github.com/meteor/meteor/issues/2174
+      //
+      // The toString() is necessary because otherwise Spacebars evaluates
+      // any string to 1 if the other values are numbers, and then considers
+      // that a duplicate.
+      // See https://github.com/aldeed/meteor-autoform/issues/656
+      _id:      option.value.toString(),
+      selected: (option.value === context.value),
+      atts:     itemAtts
+    });
+
     // Add all defined options
-    _.each(context.selectOptions, opt => {
-      if (opt.optgroup) {
-        let subItems = _.map(opt.options, subOpt => ({
-          name:     context.name,
-          label:    subOpt.label,
-          value:    subOpt.value,
-          htmlAtts: _.omit(subOpt, "label", "value"),
-          // _id must be included because it is a special property that
-          // #each uses to track unique list items when adding and removing them
-          // See https://github.com/meteor/meteor/issues/2174
-          //
-          // The toString() is necessary because otherwise Spacebars evaluates
-          // any string to 1 if the other values are numbers, and then considers
-          // that a duplicate.
-          // See https://github.com/aldeed/meteor-autoform/issues/656
-          _id:      subOpt.value.toString(),
-          selected: (subOpt.value === context.value),
-          atts:     itemAtts
-        }));
+    _.each(context.selectOptions, option => {
+      if (option.optgroup) {
+        let subOptions = _.map(option.items, buildOption);
 
         context.items.push({
-          optgroup: opt.optgroup,
-          items:    subItems
+          optgroup: option.optgroup,
+          items:    subOptions
         });
       } else {
-        context.items.push({
-          name:     context.name,
-          label:    opt.label,
-          value:    opt.value,
-          htmlAtts: _.omit(opt, "label", "value"),
-          // _id must be included because it is a special property that
-          // #each uses to track unique list items when adding and removing them
-          // See https://github.com/meteor/meteor/issues/2174
-          //
-          // The toString() is necessary because otherwise Spacebars evaluates
-          // any string to 1 if the other values are numbers, and then considers
-          // that a duplicate.
-          // See https://github.com/aldeed/meteor-autoform/issues/656
-          _id:      opt.value.toString(),
-          selected: (opt.value === context.value),
-          atts:     itemAtts
-        });
+        context.items.push(buildOption(option));
       }
     });
 

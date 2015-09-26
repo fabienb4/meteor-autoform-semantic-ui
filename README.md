@@ -8,8 +8,10 @@ Semantic-ui template for `aldeed:autoform` package.
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [New Input Types](#new-input-types)
-- [Options](#options)
+- [Extended Input Types](#extended-input-types)
+  - [basic-select](#basic-select)
+  - [select](#select)
+  - [boolean-checkbox](#boolean-checkbox)
 - [License](#license)
 - [Contributing](#contributing)
 
@@ -39,41 +41,64 @@ Or you can set the template on each form:
 
 For more information on how to use autoform, please refer to [aldeed:autoform README](https://github.com/aldeed/meteor-autoform/blob/master/README.md).
 
-## New Input Types
+## Extended Input Types
 
-##### `basic-select`: A basic select working without javascript (see: [basic-select](http://semantic-ui.com/collections/form.html#basic-select))
+### basic-select
+**A basic select working without javascript (see: [basic-select](http://semantic-ui.com/collections/form.html#html-select))**
 
 ```js
 {{> afQuickField name="items" type="basic-select" options=items}}
 ```
 
-
 Format for `options`:
 
 ```js
+// Simple
 items = [
   { value: "1", label: "Item 1" },
   { value: "2", label: "Item 2" }
 ];
+
+// With groups
+items = [
+  {
+    optgroup: "Group one",
+    items: [
+      { value: "1", label: "Item 1" },
+      { value: "2", label: "Item 2" }
+    ]
+  },
+  {
+    optgroup: "Group two",
+    items: [
+      { value: "3", label: "Item 3" },
+      { value: "4", label: "Item 4" }
+    ]
+  }
+];
 ```
 
-##### `select`: A javascript driven select (see: [selection](http://semantic-ui.com/modules/dropdown.html#selection))
+### select
+**A javascript driven select (see: [selection](http://semantic-ui.com/modules/dropdown.html#selection))**
 
 _If a field using a `select` is marked as optional in the schema, the dropdown will show a "Clear" button at the top of the list, allowing you to clear the currently selected value._
 
-**WARNING: Categories and search don't play well together**
+**WARNING: Categories and selection/search don't play well together**
 
 ```js
 // Simple
 {{> afQuickField name="items" options=items}}
 
 // Custom placeholder
-{{> afQuickField name="items" placeholder="Select an item" options=items}}
+{{> afQuickField name="items" options=items placeholder="Select an item"}}
 
-// Search
+// Selection (select appears like other inputs **do not play well with categories**)
+{{> afQuickField name="items" options=items selection=true}}
+
+// Search (**do not play well with categories**)
 {{> afQuickField name="items" options=items search=true}}
 
-// Full text search
+// Full text search (**do not play well with categories**)
 {{> afQuickField name="items" options=items fullTextSearch=true}}
 
 // Allow additions
@@ -85,12 +110,11 @@ _If a field using a `select` is marked as optional in the schema, the dropdown w
 // Multiple selections
 {{> afQuickField name="items" options=items multiple=true}}
 
-// Maximum selections
-{{> afQuickField name="items" options=items maxSelections=true}}
+// Maximum selections (in this case: 3)
+{{> afQuickField name="items" options=items maxSelections=3}}
 
-// Don't use labels
+// Show the number of selected items instead of their labels
 {{> afQuickField name="items" options=items useLabels=false}}
-
 ```
 
 Possible formats for `options`:
@@ -101,13 +125,20 @@ items = [
   { value: "2", label: "Item 2" }
 ];
 
-// With icons/flags
+// With icon/flag/label/description
+// See:
+// http://semantic-ui.com/modules/dropdown.html#icon
+// http://semantic-ui.com/modules/dropdown.html#label
+// http://semantic-ui.com/modules/dropdown.html#description
 items = [
   { value: "1", label: "Item 1", icon: "file text icon" },
-  { value: "2", label: "Item 2", icon: "bz flag" }
+  { value: "2", label: "Item 2", icon: "bz flag" },
+  { value: "3", label: "Item 3", label: "red" },
+  { value: "4", label: "Item 4", description: "new" }
 ];
 
 // Groups with headers
+// See: http://semantic-ui.com/modules/dropdown.html#header
 items = [
   {
     itemGroup: "Group one",
@@ -125,7 +156,8 @@ items = [
   }
 ];
 
-// Categories
+// Categories (**do not play well with selection/search**)
+// See: http://semantic-ui.com/modules/dropdown.html#multiple-levels
 items = [
   {
     category: { value: "cat-one", label: "Category one" },// value if allowCategorySelection
@@ -144,17 +176,17 @@ items = [
 ];
 ```
 
-## Options
+### boolean-checkbox
 
-#### `boolean-checkbox` types
-
-##### `slider` (see: [slider](http://semantic-ui.com/modules/checkbox.html#slider))
+##### `slider`
+**See: [slider](http://semantic-ui.com/modules/checkbox.html#slider)**
 
 ```js
 {{> afQuickField name="isEnabled" checkboxType="slider"}}
 ```
 
-##### `toggle` (see: [toggle](http://semantic-ui.com/modules/checkbox.html#toggle))
+##### `toggle`
+**See: [toggle](http://semantic-ui.com/modules/checkbox.html#toggle)**
 
 ```js
 {{> afQuickField name="isEnabled" checkboxType="toggle"}}

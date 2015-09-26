@@ -22,7 +22,7 @@
     {{/each}}
   {{else}}
     {{#if this.category}}
-      <div {{itemHtmlAtts}} data-value="{{this.category.value}}">
+      <div class="item" data-value="{{this.category.value}}">
         <i class="dropdown icon"></i>
         <span class="text">{{this.category.label}}</span>
         <div class="menu">
@@ -35,6 +35,12 @@
       <div {{itemHtmlAtts}} data-value="{{this.value}}">
         {{#if this.icon}}
           <i class="{{this.icon}}"></i>
+        {{/if}}
+        {{#if this.label}}
+          <div class="ui {{this.label}} empty circular label"></div>
+        {{/if}}
+        {{#if this.description}}
+          <span class="description">{{this.description}}</span>
         {{/if}}
         {{this.label}}
       </div>

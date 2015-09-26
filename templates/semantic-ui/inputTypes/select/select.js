@@ -24,51 +24,47 @@ AutoForm.addInputType("select", {
 		// build items list
 		context.items = [];
 
+		let buildItem = item => ({
+			name:         context.name,
+			label:        item.label,
+			icon:         item.icon || false,
+			description:  item.description || false,
+			value:        item.value,
+			htmlAtts:     _.extend(
+				{ class: "item" },
+				_.omit(item, "label", "value", "icon", "label", "description", "itemGroup", "category", "items")
+			),
+			// _id must be included because it is a special property that
+			// #each uses to track unique list items when adding and removing them
+			// See https://github.com/meteor/meteor/issues/2174
+			//
+			// The toString() is necessary because otherwise Spacebars evaluates
+			// any string to 1 if the other values are numbers, and then considers
+			// that a duplicate.
+			// See https://github.com/aldeed/meteor-autoform/issues/656
+			_id:          item.value.toString(),
+			selected:     (item.value === context.value),
+			atts:         itemAtts
+		});
+
 		// Add all defined options
 		_.each(context.selectOptions, item => {
 			if (item.itemGroup) {
-				let subItems = _.map(item.items, subItem => ({
-					name:     context.name,
-					label:    subItem.label,
-					icon:     subItem.icon || false,
-					value:    subItem.value,
-					htmlAtts: _.extend({ class: "item" }, _.omit(subItem, "label", "value")),
-					// _id must be included because it is a special property that
-					// #each uses to track unique list items when adding and removing them
-					// See https://github.com/meteor/meteor/issues/2174
-					//
-					// The toString() is necessary because otherwise Spacebars evaluates
-					// any string to 1 if the other values are numbers, and then considers
-					// that a duplicate.
-					// See https://github.com/aldeed/meteor-autoform/issues/656
-					_id:      subItem.value.toString(),
-					selected: (subItem.value === context.value),
-					atts:     itemAtts
-				}));
+				let subItems = _.map(item.items, buildItem);
 
 				context.items.push({
 					itemGroup: item.itemGroup,
 					items:     subItems
 				});
-			} else {
+			} else if (item.category) {
+				let subItems = _.map(item.items, buildItem);
+
 				context.items.push({
-					name:     context.name,
-					label:    item.label,
-					icon:     item.icon || false,
-					value:    item.value,
-					htmlAtts: _.extend({ class: "item" }, _.omit(item, "label", "value")),
-					// _id must be included because it is a special property that
-					// #each uses to track unique list items when adding and removing them
-					// See https://github.com/meteor/meteor/issues/2174
-					//
-					// The toString() is necessary because otherwise Spacebars evaluates
-					// any string to 1 if the other values are numbers, and then considers
-					// that a duplicate.
-					// See https://github.com/aldeed/meteor-autoform/issues/656
-					_id:      item.value.toString(),
-					selected: (item.value === context.value),
-					atts:     itemAtts
+					category: item.category,
+					items:    subItems
 				});
+			} else {
+				context.items.push(buildItem(item));
 			}
 		});
 
@@ -80,7 +76,12 @@ Template.afSelect_semanticUI.helpers({
 	divAtts() {
 		let atts = { class: "ui dropdown" };
 
-		// Add search class
+		// Add selection class
+		if (this.atts.selection) {
+			atts = AutoForm.Utility.addClass(atts, "selection");
+		}
+
+		// Add search class, also add selection for proper design
 		if (this.atts.search || this.atts.fullTextSearch) {
 			atts = AutoForm.Utility.addClass(atts, "search selection");
 		}
