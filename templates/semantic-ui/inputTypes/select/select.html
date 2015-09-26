@@ -36,7 +36,10 @@
         {{#if this.icon}}
           <i class="{{this.icon}}"></i>
         {{/if}}
-        {{this.label}}
+        {{#if this.description}}
+          <span class="description">{{this.description}}</span>
+        {{/if}}
+        <span class="text">{{this.label}}</span>
       </div>
     {{/if}}
   {{/if}}
