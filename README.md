@@ -9,6 +9,11 @@ Semantic-ui template for `aldeed:autoform` package.
 - [Installation](#installation)
 - [Usage](#usage)
 - [New Input Types](#new-input-types)
+  - [`basic-select`](#basic-select)
+  - [`select`](#select)
+  - [`boolean-checkbox`](#boolean-checkbox)
+    - [`slider`](#slider)
+    - [`toggle`](#toggle)
 - [Options](#options)
 - [License](#license)
 - [Contributing](#contributing)
@@ -41,7 +46,8 @@ For more information on how to use autoform, please refer to [aldeed:autoform RE
 
 ## New Input Types
 
-##### `basic-select`: A basic select working without javascript (see: [basic-select](http://semantic-ui.com/collections/form.html#basic-select))
+### `basic-select` type
+**A basic select working without javascript (see: [basic-select](http://semantic-ui.com/collections/form.html#basic-select))**
 
 ```js
 {{> afQuickField name="items" type="basic-select" options=items}}
@@ -57,7 +63,8 @@ items = [
 ];
 ```
 
-##### `select`: A javascript driven select (see: [selection](http://semantic-ui.com/modules/dropdown.html#selection))
+### `select` type
+**A javascript driven select (see: [selection](http://semantic-ui.com/modules/dropdown.html#selection))**
 
 _If a field using a `select` is marked as optional in the schema, the dropdown will show a "Clear" button at the top of the list, allowing you to clear the currently selected value._
 
@@ -67,8 +74,11 @@ _If a field using a `select` is marked as optional in the schema, the dropdown w
 // Simple
 {{> afQuickField name="items" options=items}}
 
+// Simple field without a label (does not work on checkboxes!)
+{{> afQuickField name="items" options=items label=false}}
+
 // Custom placeholder
-{{> afQuickField name="items" placeholder="Select an item" options=items}}
+{{> afQuickField name="items" options=items placeholder="Select an item"}}
 
 // Search
 {{> afQuickField name="items" options=items search=true}}
@@ -81,33 +91,54 @@ _If a field using a `select` is marked as optional in the schema, the dropdown w
 
 // Allow category selection
 {{> afQuickField name="items" options=items allowCategorySelection=true}}
+```
 
+#### Multiple Selections
+These options are only for if you wish to have [multiple selections](http://semantic-ui.com/modules/dropdown.html#multiple-selection) enabled.
+
+```js
 // Multiple selections
 {{> afQuickField name="items" options=items multiple=true}}
 
-// Maximum selections
-{{> afQuickField name="items" options=items maxSelections=true}}
+// Maximum selections (in this case, 3)
+{{> afQuickField name="items" options=items maxSelections=3}}
 
-// Don't use labels
+// Don't add a label for each selection, just use a tally/count of the selected.
 {{> afQuickField name="items" options=items useLabels=false}}
 
 ```
 
-Possible formats for `options`:
+#### Possible formats for `options`
+##### Simple
 ```js
-// Simple
 items = [
   { value: "1", label: "Item 1" },
   { value: "2", label: "Item 2" }
 ];
+```
 
-// With icons/flags
+##### With Icons/Flags
+Add currency symbols, flags or any of the [Semantic UI icons](http://semantic-ui.com/elements/icon.html) simply by setting the class in the item `icon` attribute.
+See an [example of an `icon` dropdown in the Semantic UI docs](http://semantic-ui.com/modules/dropdown.html#icon)
+```js
 items = [
   { value: "1", label: "Item 1", icon: "file text icon" },
   { value: "2", label: "Item 2", icon: "bz flag" }
 ];
+```
 
-// Groups with headers
+##### With a Description
+A `description` will add a small note to the right of your dropdown item.  Useful for adding a number or symbol related to the item.
+See an [example of `description` in the Semantic UI docs](http://semantic-ui.com/modules/dropdown.html#description)
+```js
+items = [
+  { value: "1", label: "Item 1", description: "2 new" },
+  { value: "2", label: "Item 2", description: "10 new" }
+];
+```
+
+##### Groups (Divided by Headers)
+```js
 items = [
   {
     itemGroup: "Group one",
@@ -124,8 +155,11 @@ items = [
     ]
   }
 ];
+```
 
-// Categories
+##### Categories
+See an [example of categories in the Semantic UI docs](http://semantic-ui.com/modules/dropdown.html#category-selection)
+```js
 items = [
   {
     category: { value: "cat-one", label: "Category one" },// value if allowCategorySelection
@@ -144,17 +178,17 @@ items = [
 ];
 ```
 
-## Options
+### `boolean-checkbox` type
 
-#### `boolean-checkbox` types
-
-##### `slider` (see: [slider](http://semantic-ui.com/modules/checkbox.html#slider))
+#### `slider`
+(see: [slider](http://semantic-ui.com/modules/checkbox.html#slider))
 
 ```js
 {{> afQuickField name="isEnabled" checkboxType="slider"}}
 ```
 
-##### `toggle` (see: [toggle](http://semantic-ui.com/modules/checkbox.html#toggle))
+#### `toggle`
+(see: [toggle](http://semantic-ui.com/modules/checkbox.html#toggle))
 
 ```js
 {{> afQuickField name="isEnabled" checkboxType="toggle"}}
