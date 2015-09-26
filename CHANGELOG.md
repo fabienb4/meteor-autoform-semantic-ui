@@ -5,6 +5,10 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
+### 0.6.3
+
+- Fixed problem with labels.
+
 ### 0.6.2
 
 - Additional fixes/improvements after 0.6.x.
