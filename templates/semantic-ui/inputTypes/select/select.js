@@ -32,7 +32,7 @@ AutoForm.addInputType("select", {
 			value:        item.value,
 			htmlAtts:     _.extend(
 				{ class: "item" },
-				_.omit(item, "label", "value", "icon", "label", "description", "itemGroup", "category", "items")
+				_.omit(item, "label", "value", "icon", "circularLabel", "description", "itemGroup", "category", "items")
 			),
 			// _id must be included because it is a special property that
 			// #each uses to track unique list items when adding and removing them

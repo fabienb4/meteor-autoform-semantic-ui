@@ -133,7 +133,7 @@ items = [
 items = [
   { value: "1", label: "Item 1", icon: "file text icon" },
   { value: "2", label: "Item 2", icon: "bz flag" },
-  { value: "3", label: "Item 3", label: "red" },
+  { value: "3", label: "Item 3", circularLabel: "red" },
   { value: "4", label: "Item 4", description: "new" }
 ];
 
