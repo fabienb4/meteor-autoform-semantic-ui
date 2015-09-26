@@ -78,11 +78,16 @@ AutoForm.addInputType("select", {
 
 Template.afSelect_semanticUI.helpers({
 	divAtts() {
-		let atts = { class: "ui fluid selection dropdown" };
+		let atts = { class: "ui dropdown" };
 
 		// Add search class
 		if (this.atts.search || this.atts.fullTextSearch) {
-			atts = AutoForm.Utility.addClass(atts, "search");
+			atts = AutoForm.Utility.addClass(atts, "search selection");
+		}
+
+		// Add multiple class
+		if (this.atts.multiple) {
+			atts = AutoForm.Utility.addClass(atts, "multiple");
 		}
 
 		return atts;
@@ -92,16 +97,6 @@ Template.afSelect_semanticUI.helpers({
 	},
 	required() {
 		return this.atts.required === "";
-	},
-	itemHtmlAtts() {
-		let atts = _.clone(this.htmlAtts);
-
-		// Add selected class
-		if (this.selected) {
-			atts = AutoForm.Utility.addClass(atts, "active selected");
-		}
-
-		return atts;
 	}
 });
 
@@ -113,6 +108,23 @@ Template.afSelect_semanticUI.events({
 
 Template.afSelect_semanticUI.onRendered(function() {
   this.$(this.firstNode).dropdown({
-		fullTextSearch: this.data.atts.fullTextSearch || false
+		fullTextSearch:         this.data.atts.fullTextSearch || false,
+		allowAdditions:         this.data.atts.allowAdditions || false,
+		maxSelections:          this.data.atts.maxSelections || false,
+    allowCategorySelection: this.data.atts.allowCategorySelection || false,
+		useLabels:              this.data.atts.useLabels === false ? false : true
 	});
+});
+
+Template.afSelectRecursive.helpers({
+	itemHtmlAtts() {
+		let atts = _.clone(this.htmlAtts);
+
+		// Add selected class
+		if (this.selected) {
+			atts = AutoForm.Utility.addClass(atts, "active selected");
+		}
+
+		return atts;
+	}
 });

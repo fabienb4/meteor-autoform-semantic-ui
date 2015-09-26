@@ -61,6 +61,8 @@ items = [
 
 _If a field using a `select` is marked as optional in the schema, the dropdown will show a "Clear" button at the top of the list, allowing you to clear the currently selected value._
 
+**WARNING: Categories and search don't play well together**
+
 ```js
 // Simple
 {{> afQuickField name="items" options=items}}
@@ -73,6 +75,22 @@ _If a field using a `select` is marked as optional in the schema, the dropdown w
 
 // Full text search
 {{> afQuickField name="items" options=items fullTextSearch=true}}
+
+// Allow additions
+{{> afQuickField name="items" options=items allowAdditions=true}}
+
+// Allow category selection
+{{> afQuickField name="items" options=items allowCategorySelection=true}}
+
+// Multiple selections
+{{> afQuickField name="items" options=items multiple=true}}
+
+// Maximum selections
+{{> afQuickField name="items" options=items maxSelections=true}}
+
+// Don't use labels
+{{> afQuickField name="items" options=items useLabels=false}}
+
 ```
 
 Possible formats for `options`:
@@ -105,7 +123,25 @@ items = [
       { value: "4", label: "Item 4" }
     ]
   }
-]
+];
+
+// Categories
+items = [
+  {
+    category: { value: "cat-one", label: "Category one" },// value if allowCategorySelection
+    items: [
+      { value: "1", label: "Item 1" },
+      { value: "2", label: "Item 2" }
+    ]
+  },
+  {
+    category: { label: "Category two" },
+    items: [
+      { value: "3", label: "Item 3" },
+      { value: "4", label: "Item 4" }
+    ]
+  }
+];
 ```
 
 ## Options

@@ -5,6 +5,12 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
+### 0.6.1
+
+- Updated `select` to support new features.
+  - `allowAdditions`, `allowCategorySelection`, `multiple`, `maxSelections`, `useLabels` are now supported.
+  - Categories can now be used (see README).
+
 ### 0.6.0 [BREAKING]
 
 - Updated for compatibility Meteor 1.2 (_no longer usable with Meteor < 1.2_).

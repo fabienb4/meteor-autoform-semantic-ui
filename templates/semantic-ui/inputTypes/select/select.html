@@ -8,25 +8,36 @@
         <div class="ui fluid compact clear button"><i class="erase icon"></i></div>
       {{/unless}}
       {{#each this.items}}
-        {{#if this.itemGroup}}
-          <div class="header">{{this.itemGroup}}</div>
-          {{#each this.items}}
-            <div {{itemHtmlAtts}} data-value="{{this.value}}">
-              {{#if this.icon}}
-                <i class="{{this.icon}}"></i>
-              {{/if}}
-              {{this.label}}
-            </div>
-          {{/each}}
-        {{else}}
-          <div {{itemHtmlAtts}} data-value="{{this.value}}">
-            {{#if this.icon}}
-              <i class="{{this.icon}}"></i>
-            {{/if}}
-            {{this.label}}
-          </div>
-        {{/if}}
+        {{> afSelectRecursive}}
       {{/each}}
     </div>
   </div>
+</template>
+
+<template name="afSelectRecursive">
+  {{#if this.itemGroup}}
+    <div class="header">{{this.itemGroup}}</div>
+    {{#each this.items}}
+      {{> afSelectRecursive}}
+    {{/each}}
+  {{else}}
+    {{#if this.category}}
+      <div {{itemHtmlAtts}} data-value="{{this.category.value}}">
+        <i class="dropdown icon"></i>
+        <span class="text">{{this.category.label}}</span>
+        <div class="menu">
+          {{#each this.items}}
+            {{> afSelectRecursive}}
+          {{/each}}
+        </div>
+      </div>
+    {{else}}
+      <div {{itemHtmlAtts}} data-value="{{this.value}}">
+        {{#if this.icon}}
+          <i class="{{this.icon}}"></i>
+        {{/if}}
+        {{this.label}}
+      </div>
+    {{/if}}
+  {{/if}}
 </template>
