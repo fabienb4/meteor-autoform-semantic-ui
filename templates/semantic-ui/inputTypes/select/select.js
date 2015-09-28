@@ -76,9 +76,11 @@ Template.afSelect_semanticUI.helpers({
 	divAtts() {
 		let atts = { class: "ui dropdown" };
 
-		// Add selection class
-		if (this.atts.selection) {
-			atts = AutoForm.Utility.addClass(atts, "selection");
+		// Add custom classes or default
+		if (_.isString(this.atts.classNames)) {
+			atts = AutoForm.Utility.addClass(atts, this.atts.classNames);
+		} else {
+			atts = AutoForm.Utility.addClass(atts, "fluid selection");
 		}
 
 		// Add search class, also add selection for proper design
@@ -92,6 +94,9 @@ Template.afSelect_semanticUI.helpers({
 		}
 
 		return atts;
+	},
+	inputAtts() {
+		return _.pick(this.atts, "name", "id", "required", "data-schema-key", "autocomplete", "value");
 	},
 	placeholder() {
 		return this.atts.placeholder || "(Select One)";
