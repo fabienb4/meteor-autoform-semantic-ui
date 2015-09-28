@@ -5,6 +5,13 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
+### 0.7.0 [BREAKING]
+
+- Revamped `select` settings.
+  - Removed `selection` property.
+  - Added `classNames` property (default to: `"fluid selection"`, pass an empty string to clear default).
+  - Fixed atts on hidden input.
+
 ### 0.6.3
 
 - Fixed problem with labels.
