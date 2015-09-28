@@ -74,7 +74,9 @@ AutoForm.addInputType("select", {
 
 Template.afSelect_semanticUI.helpers({
 	divAtts() {
-		let atts = { class: "ui dropdown" };
+		let atts = _.pick(this.atts, "class");
+
+		atts = AutoForm.Utility.addClass(atts, "ui dropdown");
 
 		// Add selection class
 		if (this.atts.selection) {
@@ -92,6 +94,9 @@ Template.afSelect_semanticUI.helpers({
 		}
 
 		return atts;
+	},
+	inputAtts() {
+		return _.omit(this.atts, "class");
 	},
 	placeholder() {
 		return this.atts.placeholder || "(Select One)";
