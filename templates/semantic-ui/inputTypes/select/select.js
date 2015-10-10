@@ -43,7 +43,6 @@ AutoForm.addInputType("select", {
 			// that a duplicate.
 			// See https://github.com/aldeed/meteor-autoform/issues/656
 			_id:          item.value.toString(),
-			selected:     (item.value === context.value),
 			atts:         itemAtts
 		});
 
@@ -101,8 +100,8 @@ Template.afSelect_semanticUI.helpers({
 	placeholder() {
 		return this.atts.placeholder || "(Select One)";
 	},
-	required() {
-		return this.atts.required === "";
+	showClearButton() {
+		return this.atts.required !== "" && ! this.atts.multiple;
 	}
 });
 
@@ -113,24 +112,11 @@ Template.afSelect_semanticUI.events({
 });
 
 Template.afSelect_semanticUI.onRendered(function() {
-  this.$(this.firstNode).dropdown({
+  this.$(this.firstNode).dropdown(_.extend({
 		fullTextSearch:         this.data.atts.fullTextSearch || false,
 		allowAdditions:         this.data.atts.allowAdditions || false,
 		maxSelections:          this.data.atts.maxSelections || false,
     allowCategorySelection: this.data.atts.allowCategorySelection || false,
 		useLabels:              this.data.atts.useLabels === false ? false : true
-	});
-});
-
-Template.afSelectRecursive.helpers({
-	itemHtmlAtts() {
-		let atts = _.clone(this.htmlAtts);
-
-		// Add selected class
-		if (this.selected) {
-			atts = AutoForm.Utility.addClass(atts, "active selected");
-		}
-
-		return atts;
-	}
+	}, this.data.atts.settings));
 });

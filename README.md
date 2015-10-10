@@ -47,35 +47,43 @@ For more information on how to use autoform, please refer to [aldeed:autoform RE
 **A basic select working without javascript (see: [basic-select](http://semantic-ui.com/collections/form.html#html-select))**
 
 ```js
-{{> afQuickField name="items" type="basic-select" options=items}}
+{{> afQuickField name="items" type="basic-select"}}
 ```
 
-Format for `options`:
+Possible formats for `options` in schema:
 
 ```js
 // Simple
-items = [
-  { value: "1", label: "Item 1" },
-  { value: "2", label: "Item 2" }
-];
-
-// With groups
-items = [
-  {
-    optgroup: "Group one",
-    items: [
+autoform: {
+  afFieldInput: {
+    options: () => [
       { value: "1", label: "Item 1" },
       { value: "2", label: "Item 2" }
     ]
-  },
-  {
-    optgroup: "Group two",
-    items: [
-      { value: "3", label: "Item 3" },
-      { value: "4", label: "Item 4" }
+  }
+}
+
+// With groups
+autoform: {
+  afFieldInput: {
+    options: () => [
+      {
+        optgroup: "Group one",
+        items: [
+          { value: "1", label: "Item 1" },
+          { value: "2", label: "Item 2" }
+        ]
+      },
+      {
+        optgroup: "Group two",
+        items: [
+          { value: "3", label: "Item 3" },
+          { value: "4", label: "Item 4" }
+        ]
+      }
     ]
   }
-];
+}
 ```
 
 ### select
@@ -87,96 +95,117 @@ _If a field using a `select` is marked as optional in the schema, the dropdown w
 
 ```js
 // Simple
-{{> afQuickField name="items" options=items}}
+{{> afQuickField name="items"}}
 
 // Custom placeholder
-{{> afQuickField name="items" options=items placeholder="Select an item"}}
+{{> afQuickField name="items" placeholder="Select an item"}}
 
 // Specify classes for the dropdown (default: "fluid selection")
-{{> afQuickField name="items" options=items classNames="compact selection"}}
+{{> afQuickField name="items" classNames="compact selection"}}
 
 // Remove default "fluid selection" from classes
-{{> afQuickField name="items" options=items classNames=""}}
+{{> afQuickField name="items" classNames=""}}
 
 // Search (**do not play well with categories**)
-{{> afQuickField name="items" options=items search=true}}
+{{> afQuickField name="items" search=true}}
 
 // Full text search (**do not play well with categories**)
-{{> afQuickField name="items" options=items fullTextSearch=true}}
+{{> afQuickField name="items" fullTextSearch=true}}
 
 // Allow additions
-{{> afQuickField name="items" options=items allowAdditions=true}}
+{{> afQuickField name="items" allowAdditions=true}}
 
 // Allow category selection
-{{> afQuickField name="items" options=items allowCategorySelection=true}}
+{{> afQuickField name="items" allowCategorySelection=true}}
 
 // Multiple selections
-{{> afQuickField name="items" options=items multiple=true}}
+{{> afQuickField name="items" multiple=true}}
 
 // Maximum selections (in this case: 3)
-{{> afQuickField name="items" options=items maxSelections=3}}
+{{> afQuickField name="items" maxSelections=3}}
 
 // Show the number of selected items instead of their labels
-{{> afQuickField name="items" options=items useLabels=false}}
+{{> afQuickField name="items" useLabels=false}}
+
+// Customize dropdown initialization settings
+// See: http://semantic-ui.com/modules/dropdown.html#/settings
+// Override any settings set with above properties
+{{> afQuickField name="items" settings=settings}}
 ```
 
-Possible formats for `options`:
+Possible formats for `options` in schema:
 ```js
 // Simple
-items = [
-  { value: "1", label: "Item 1" },
-  { value: "2", label: "Item 2" }
-];
+autoform: {
+  afFieldInput: {
+    options: () => [
+      { value: "1", label: "Item 1" },
+      { value: "2", label: "Item 2" }
+    ]
+  }
+}
 
 // With icon/flag/label/description
 // See:
 // http://semantic-ui.com/modules/dropdown.html#icon
 // http://semantic-ui.com/modules/dropdown.html#label
 // http://semantic-ui.com/modules/dropdown.html#description
-items = [
-  { value: "1", label: "Item 1", icon: "file text icon" },
-  { value: "2", label: "Item 2", icon: "bz flag" },
-  { value: "3", label: "Item 3", circularLabel: "red" },
-  { value: "4", label: "Item 4", description: "new" }
-];
+autoform: {
+  afFieldInput: {
+    options: () => [
+      { value: "1", label: "Item 1", icon: "file text icon" },
+      { value: "2", label: "Item 2", icon: "bz flag" },
+      { value: "3", label: "Item 3", circularLabel: "red" },
+      { value: "4", label: "Item 4", description: "new" }
+    ]
+  }
+}
 
 // Groups with headers
 // See: http://semantic-ui.com/modules/dropdown.html#header
-items = [
-  {
-    itemGroup: "Group one",
-    items: [
-      { value: "1", label: "Item 1" },
-      { value: "2", label: "Item 2" }
-    ]
-  },
-  {
-    itemGroup: "Group two",
-    items: [
-      { value: "3", label: "Item 3" },
-      { value: "4", label: "Item 4" }
+autoform: {
+  afFieldInput: {
+    options: () => [
+      {
+        itemGroup: "Group one",
+        items: [
+          { value: "1", label: "Item 1" },
+          { value: "2", label: "Item 2" }
+        ]
+      },
+      {
+        itemGroup: "Group two",
+        items: [
+          { value: "3", label: "Item 3" },
+          { value: "4", label: "Item 4" }
+        ]
+      }
     ]
   }
-];
+}
 
 // Categories (**do not play well with selection/search**)
 // See: http://semantic-ui.com/modules/dropdown.html#multiple-levels
-items = [
-  {
-    category: { value: "cat-one", label: "Category one" },// value if allowCategorySelection
-    items: [
-      { value: "1", label: "Item 1" },
-      { value: "2", label: "Item 2" }
-    ]
-  },
-  {
-    category: { label: "Category two" },
-    items: [
-      { value: "3", label: "Item 3" },
-      { value: "4", label: "Item 4" }
+autoform: {
+  afFieldInput: {
+    options: () => [
+      {
+        category: { value: "cat-one", label: "Category one" },// value if allowCategorySelection
+        items: [
+          { value: "1", label: "Item 1" },
+          { value: "2", label: "Item 2" }
+        ]
+      },
+      {
+        category: { label: "Category two" },
+        items: [
+          { value: "3", label: "Item 3" },
+          { value: "4", label: "Item 4" }
+        ]
+      }
     ]
   }
-];
+}
 ```
 
 ### boolean-checkbox
