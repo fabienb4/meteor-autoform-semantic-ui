@@ -5,6 +5,14 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
+### 0.7.1
+
+- Updated `aldeed:autoform` dependency to 5.6.0.
+- Updated `select`:
+  - Let Semantic-UI handle selected item(s).
+  - Allow customizing dropdown settings (see README).
+- Updated README.
+
 ### 0.7.0 [BREAKING]
 
 - Revamped `select` settings.
