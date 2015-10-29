@@ -1,6 +1,6 @@
 Package.describe({
   name: 'fabienb4:autoform-semantic-ui',
-  version: '0.7.1',
+  version: '0.7.2',
   // Brief, one-line summary of the package.
   summary: 'Semantic-ui template for aldeed:autoform package.',
   // URL to the Git repository containing the source code for this package.
@@ -15,7 +15,7 @@ Package.onUse(function(api) {
 
   api.use(['ecmascript', 'templating', 'underscore', 'jquery'], 'client');
 
-  api.use('aldeed:autoform@5.6.0', 'client');
+  api.use('aldeed:autoform@5.7.1', 'client');
 
   api.addFiles([
     // semantic-ui Template - General
