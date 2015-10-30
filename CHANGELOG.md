@@ -5,6 +5,10 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
+### 0.7.2
+
+- Bumped aldeed:autoform package version.
+
 ### 0.7.1
 
 - Updated `aldeed:autoform` dependency to 5.6.0.
