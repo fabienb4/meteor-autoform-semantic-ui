@@ -82,6 +82,11 @@ Template.afSelect_semanticUI.helpers({
 			atts = AutoForm.Utility.addClass(atts, "fluid selection");
 		}
 
+		// Add the disabled class if required
+		if (this.atts.disabled != null) {
+			atts = AutoForm.Utility.addClass(atts, "disabled");
+		}
+
 		// Add search class, also add selection for proper design
 		if (this.atts.search || this.atts.fullTextSearch) {
 			atts = AutoForm.Utility.addClass(atts, "search selection");
