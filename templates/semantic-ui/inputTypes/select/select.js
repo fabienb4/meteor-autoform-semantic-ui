@@ -106,17 +106,20 @@ Template.afSelect_semanticUI.helpers({
 });
 
 Template.afSelect_semanticUI.events({
-	"click .ui.clear.button"(event) {
-		$(event.target).closest(".ui.dropdown").dropdown("clear").dropdown("hide");
+	"click .ui.clear.button"(event, templ) {
+		templ.$(".ui.dropdown").dropdown("clear");
 	}
 });
 
 Template.afSelect_semanticUI.onRendered(function() {
-  this.$(this.firstNode).dropdown(_.extend({
-		fullTextSearch:         this.data.atts.fullTextSearch || false,
-		allowAdditions:         this.data.atts.allowAdditions || false,
-		maxSelections:          this.data.atts.maxSelections || false,
-    allowCategorySelection: this.data.atts.allowCategorySelection || false,
-		useLabels:              this.data.atts.useLabels === false ? false : true
-	}, this.data.atts.settings));
+		var instance = this;
+    var inputControl = instance.$('[data-schema-key]');
+  	instance.$(instance.firstNode).dropdown(_.extend({
+        fullTextSearch         : instance.data.atts.fullTextSearch || false,
+        allowAdditions         : instance.data.atts.allowAdditions || false,
+        maxSelections          : instance.data.atts.maxSelections || false,
+    		allowCategorySelection : instance.data.atts.allowCategorySelection || false,
+        useLabels              : instance.data.atts.useLabels === false ? false : true,
+        onChange               : function (event) { inputControl.dropdown('refresh'); }
+    }, instance.data.atts.settings));
 });
