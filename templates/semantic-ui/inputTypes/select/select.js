@@ -4,13 +4,13 @@ AutoForm.addInputType("select", {
 		return this.val();
 	},
 	valueConverters: {
-    stringArray:  AutoForm.valueConverters.stringToStringArray,
-    number:       AutoForm.valueConverters.stringToNumber,
-    numberArray:  AutoForm.valueConverters.stringToNumberArray,
-    boolean:      AutoForm.valueConverters.stringToBoolean,
+    stringArray : AutoForm.valueConverters.stringToStringArray,
+    number      : AutoForm.valueConverters.stringToNumber,
+    numberArray : AutoForm.valueConverters.stringToNumberArray,
+    boolean     : AutoForm.valueConverters.stringToBoolean,
     booleanArray: AutoForm.valueConverters.stringToBooleanArray,
-    date:         AutoForm.valueConverters.stringToDate,
-    dateArray:    AutoForm.valueConverters.stringToDateArray
+    date        : AutoForm.valueConverters.stringToDate,
+    dateArray   : AutoForm.valueConverters.stringToDateArray
 	},
 	contextAdjust(context) {
 		// can fix issues with some browsers selecting the firstOption instead of the selected option
@@ -25,12 +25,12 @@ AutoForm.addInputType("select", {
 		context.items = [];
 
 		let buildItem = item => ({
-			name:         context.name,
-			label:        item.label,
-			icon:         item.icon || false,
-			description:  item.description || false,
-			value:        item.value,
-			htmlAtts:     _.extend(
+			name       : context.name,
+			label      : item.label,
+			icon       : item.icon || false,
+			description: item.description || false,
+			value      : item.value,
+			htmlAtts   : _.extend(
 				{ class: "item" },
 				_.omit(item, "label", "value", "icon", "circularLabel", "description", "itemGroup", "category", "items")
 			),
@@ -42,8 +42,8 @@ AutoForm.addInputType("select", {
 			// any string to 1 if the other values are numbers, and then considers
 			// that a duplicate.
 			// See https://github.com/aldeed/meteor-autoform/issues/656
-			_id:          item.value.toString(),
-			atts:         itemAtts
+			_id        : item.value.toString(),
+			atts       : itemAtts
 		});
 
 		// Add all defined options
@@ -53,14 +53,14 @@ AutoForm.addInputType("select", {
 
 				context.items.push({
 					itemGroup: item.itemGroup,
-					items:     subItems
+					items    : subItems
 				});
 			} else if (item.category) {
 				let subItems = _.map(item.items, buildItem);
 
 				context.items.push({
 					category: item.category,
-					items:    subItems
+					items   : subItems
 				});
 			} else {
 				context.items.push(buildItem(item));
@@ -106,17 +106,20 @@ Template.afSelect_semanticUI.helpers({
 });
 
 Template.afSelect_semanticUI.events({
-	"click .ui.clear.button"(event) {
-		$(event.target).closest(".ui.dropdown").dropdown("clear").dropdown("hide");
+	"click .ui.clear.button"(event, template) {
+		template.$(".ui.dropdown").dropdown("clear").dropdown("hide");
 	}
 });
 
 Template.afSelect_semanticUI.onRendered(function() {
-  this.$(this.firstNode).dropdown(_.extend({
-		fullTextSearch:         this.data.atts.fullTextSearch || false,
-		allowAdditions:         this.data.atts.allowAdditions || false,
-		maxSelections:          this.data.atts.maxSelections || false,
-    allowCategorySelection: this.data.atts.allowCategorySelection || false,
-		useLabels:              this.data.atts.useLabels === false ? false : true
+	let inputControl = this.$("[data-schema-key]");
+
+	this.$(this.firstNode).dropdown(_.extend({
+		fullTextSearch        : this.data.atts.fullTextSearch || false,
+		allowAdditions        : this.data.atts.allowAdditions || false,
+		maxSelections         : this.data.atts.maxSelections || false,
+		allowCategorySelection: this.data.atts.allowCategorySelection || false,
+		useLabels             : this.data.atts.useLabels === false ? false : true,
+		onChange(event)       { inputControl.dropdown("refresh"); }
 	}, this.data.atts.settings));
 });
