@@ -5,6 +5,12 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
+### 0.7.3
+
+- Allow Autoform `disabled` form type behavior to work properly.
+- Fixed `formValues` reactive update with `select`.
+- Minor cleanup.
+
 ### 0.7.2
 
 - Bumped aldeed:autoform package version.
