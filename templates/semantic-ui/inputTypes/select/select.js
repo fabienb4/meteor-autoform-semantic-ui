@@ -73,6 +73,7 @@ AutoForm.addInputType("select", {
 
 Template.afSelect_semanticUI.helpers({
 	divAtts() {
+		console.log("redraw")
 		let atts = { class: "ui dropdown" };
 
 		// Add custom classes or default
@@ -80,6 +81,11 @@ Template.afSelect_semanticUI.helpers({
 			atts = AutoForm.Utility.addClass(atts, this.atts.classNames);
 		} else {
 			atts = AutoForm.Utility.addClass(atts, "fluid selection");
+		}
+
+		// Add the disabled class if required
+		if (this.atts.disabled === "") {
+			atts = AutoForm.Utility.addClass(atts, "disabled");
 		}
 
 		// Add search class, also add selection for proper design
