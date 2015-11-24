@@ -5,6 +5,13 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
+### 0.8.0 BREAKING
+
+- Reverted part of previous commit (problem fixed with Semantic-UI > 2.1.5).
+- Fixed `select` not properly updated on initial page load or hard refresh.
+
+> `semantic:ui-css` package hasn't been updated on Atmosphere at the time of writing, use `semantic:ui` instead (> 2.1.5 needed).
+
 ### 0.7.3
 
 - Allow Autoform `disabled` form type behavior to work properly.
