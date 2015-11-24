@@ -1,7 +1,11 @@
 <template name="afSelect_semanticUI">
   <div {{divAtts}}>
     <input type="hidden" {{inputAtts}} value="{{this.value}}">
-    <div class="default text">{{placeholder}}</div>
+    {{#if this.atts.placeholder}}
+      <div class="default text">{{this.atts.placeholder}}</div>
+    {{else}}
+      <div class="text"></div>
+    {{/if}}
     <i class="dropdown icon"></i>
     <div class="menu">
       {{#if showClearButton}}

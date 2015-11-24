@@ -73,7 +73,6 @@ AutoForm.addInputType("select", {
 
 Template.afSelect_semanticUI.helpers({
 	divAtts() {
-		console.log("redraw")
 		let atts = { class: "ui dropdown" };
 
 		// Add custom classes or default
@@ -103,9 +102,6 @@ Template.afSelect_semanticUI.helpers({
 	inputAtts() {
 		return _.pick(this.atts, "name", "id", "required", "data-schema-key", "autocomplete", "value");
 	},
-	placeholder() {
-		return this.atts.placeholder || "(Select One)";
-	},
 	showClearButton() {
 		return this.atts.required !== "" && ! this.atts.multiple;
 	}
@@ -118,14 +114,22 @@ Template.afSelect_semanticUI.events({
 });
 
 Template.afSelect_semanticUI.onRendered(function() {
-	let inputControl = this.$("[data-schema-key]");
+	let node = this.$(this.firstNode);
 
-	this.$(this.firstNode).dropdown(_.extend({
+	node.dropdown(_.extend({
 		fullTextSearch        : this.data.atts.fullTextSearch || false,
 		allowAdditions        : this.data.atts.allowAdditions || false,
 		maxSelections         : this.data.atts.maxSelections || false,
 		allowCategorySelection: this.data.atts.allowCategorySelection || false,
-		useLabels             : this.data.atts.useLabels === false ? false : true,
-		onChange(event)       { inputControl.dropdown("refresh"); }
+		useLabels             : this.data.atts.useLabels === false ? false : true
 	}, this.data.atts.settings));
+
+  this.autorun((c) => {
+    let data = Template.currentData();
+
+    if (data.value) {
+			node.dropdown("set selected", data.value);
+      c.stop();
+    }
+  });
 });
