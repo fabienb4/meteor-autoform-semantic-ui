@@ -5,7 +5,11 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
-### 0.8.0 BREAKING
+### 0.9.0 [BREAKING]
+
+- Renamed `classNames` attribute to `class` for consistency with Autoform.
+
+### 0.8.0 [BREAKING]
 
 - Reverted part of previous commit (problem fixed with Semantic-UI > 2.1.5).
 - Fixed `select` not properly updated on initial page load or hard refresh.
