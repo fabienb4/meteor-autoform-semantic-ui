@@ -101,10 +101,10 @@ _If a field using a `select` is marked as optional in the schema, the dropdown w
 {{> afQuickField name="items" placeholder="Select an item"}}
 
 // Specify classes for the dropdown (default: "fluid selection")
-{{> afQuickField name="items" classNames="compact selection"}}
+{{> afQuickField name="items" class="compact selection"}}
 
 // Remove default "fluid selection" from classes
-{{> afQuickField name="items" classNames=""}}
+{{> afQuickField name="items" class=""}}
 
 // Search (**do not play well with categories**)
 {{> afQuickField name="items" search=true}}

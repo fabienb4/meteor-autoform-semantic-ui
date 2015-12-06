@@ -76,8 +76,8 @@ Template.afSelect_semanticUI.helpers({
 		let atts = { class: "ui dropdown" };
 
 		// Add custom classes or default
-		if (_.isString(this.atts.classNames)) {
-			atts = AutoForm.Utility.addClass(atts, this.atts.classNames);
+		if (_.isString(this.atts.class)) {
+			atts = AutoForm.Utility.addClass(atts, this.atts.class);
 		} else {
 			atts = AutoForm.Utility.addClass(atts, "fluid selection");
 		}
