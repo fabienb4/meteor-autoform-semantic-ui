@@ -8,6 +8,8 @@ Semantic-ui template for `aldeed:autoform` package.
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Input Options](#input-options)
+  - [Icons and Labels](#icons-and-labels)
 - [Extended Input Types](#extended-input-types)
   - [basic-select](#basic-select)
   - [select](#select)
@@ -40,6 +42,32 @@ Or you can set the template on each form:
 ```
 
 For more information on how to use autoform, please refer to [aldeed:autoform README](https://github.com/aldeed/meteor-autoform/blob/master/README.md).
+
+## Input Options
+
+### Icons and Labels
+
+> To avoid alignment problems, you might want to use `label=false` with the following inputs.
+
+```js
+  // Left icon
+  {{> afQuickField name="name" leftIcon="empty circle"}}
+
+  // Left label
+  {{> afQuickField name="name" leftLabel="name"}}
+
+  // Right icon
+  {{> afQuickField name="name" rightIcon="empty circle"}}
+
+  // Right label
+  {{> afQuickField name="name" rightLabel="name"}}
+
+  // Left icon, right label
+  {{> afQuickField name="name" leftIcon="empty circle" rightLabel="name"}}
+
+  // Left label, right icon
+  {{> afQuickField name="name" leftLabel="name" rightIcon="empty circle"}}
+```
 
 ## Extended Input Types
 
