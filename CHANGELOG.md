@@ -5,6 +5,10 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
+### 0.9.1
+
+- Added label and icon features to input.
+
 ### 0.9.0 [BREAKING]
 
 - Renamed `classNames` attribute to `class` for consistency with Autoform.
