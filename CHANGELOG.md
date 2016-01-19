@@ -5,6 +5,11 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
+### 0.9.2
+
+- Added missing `settings` parameters to input types using Semantic-UI `checkbox` modules.
+- Fixed `error` class on `afObjectField`.
+
 ### 0.9.1
 
 - Added label and icon features to input.
