@@ -5,6 +5,10 @@ Semantic-ui template for aldeed:autoform package.
 
 ## ChangeLog
 
+### 0.9.3
+
+- Updated `aldeed:autoform` dependency to 5.8.1.
+
 ### 0.9.2
 
 - Added missing `settings` parameters to input types using Semantic-UI `checkbox` modules.
