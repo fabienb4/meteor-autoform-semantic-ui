@@ -20,5 +20,5 @@ Template.afRadioGroup_semanticUI.helpers({
 });
 
 Template.afRadioGroup_semanticUI.onRendered(function() {
-  this.$(this.firstNode).find(".ui.radio.checkbox").checkbox();
+  this.$(this.firstNode).find(".ui.radio.checkbox").checkbox(this.data.atts.settings);
 });

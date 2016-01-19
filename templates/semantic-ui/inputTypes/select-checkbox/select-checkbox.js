@@ -20,5 +20,5 @@ Template.afCheckboxGroup_semanticUI.helpers({
 });
 
 Template.afCheckboxGroup_semanticUI.onRendered(function() {
-  this.$(this.firstNode).find(".ui.checkbox").checkbox();
+  this.$(this.firstNode).find(".ui.checkbox").checkbox(this.data.atts.settings);
 });
