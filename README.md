@@ -1,5 +1,7 @@
 # fabienb4:autoform-semantic-ui
 
+> **I am looking for someone to take over this package, if you are interested in maintaining it, please send me an email.**
+
 Semantic-ui template for `aldeed:autoform` package.
 
 > semantic-ui is NOT included in this package, to allow you to use a customized version if you need to. If you don't use a custom version, you must add the default package `semantic:ui-css` to your meteor app, otherwise, there will be no styling.
