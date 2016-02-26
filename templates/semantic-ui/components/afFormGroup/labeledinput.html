@@ -1,0 +1,19 @@
+<template name="labeledinput">
+    <div class="{{inputClass}}">
+    {{#if leftLabel}}
+    <div class="ui label">{{leftLabel}}</div>
+    {{else}}
+    {{#if leftIcon}}
+    <i class="{{leftIcon}} icon"></i>
+    {{/if}}
+    {{/if}}
+    {{> afFieldInput this.afFieldInputAtts}}
+    {{#if rightLabel}}
+    <div class="ui label">{{rightLabel}}</div>
+    {{else}}
+    {{#if rightIcon}}
+    <i class="{{rightIcon}} icon"></i>
+    {{/if}}
+    {{/if}}
+    </div>
+</template>

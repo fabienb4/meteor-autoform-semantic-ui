@@ -17,6 +17,8 @@ Package.onUse(function(api) {
 
   api.use('aldeed:autoform@5.8.1', 'client');
 
+  api.use('aldeed:template-extension','client');
+
   api.addFiles([
     // semantic-ui Template - General
     'templates/semantic-ui/semantic-ui.js',
@@ -26,6 +28,8 @@ Package.onUse(function(api) {
     'templates/semantic-ui/components/afArrayField/afArrayField.html',
     'templates/semantic-ui/components/afArrayField/afArrayField.css',
     'templates/semantic-ui/components/afFormGroup/afFormGroup.html',
+    'templates/semantic-ui/components/afFormGroup/unlabeledinput.html',
+    'templates/semantic-ui/components/afFormGroup/labeledinput.html',
     'templates/semantic-ui/components/afFormGroup/afFormGroup.js',
     'templates/semantic-ui/components/afObjectField/afObjectField.html',
     'templates/semantic-ui/components/afObjectField/afObjectField.js',
