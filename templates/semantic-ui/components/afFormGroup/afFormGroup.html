@@ -1,5 +1,5 @@
 <template name="afFormGroup_semanticUI">
-  <div class="{{afFormGroupClass}}  field {{requiredClass}}{{#if afFieldIsInvalid name=this.name}} error{{/if}}" {{afFormGroupAtts}}>
+  <div class="{{afFormGroupClass}} {{extraGroupClasses}} field {{requiredClass}}{{#if afFieldIsInvalid name=this.name}} error{{/if}}" {{afFormGroupAtts}}>
     {{#unless skipLabel}}
       <label {{afFieldLabelAtts}}>
         {{#if this.labelText}}

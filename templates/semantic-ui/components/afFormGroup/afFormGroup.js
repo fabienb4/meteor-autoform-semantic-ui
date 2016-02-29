@@ -59,6 +59,9 @@ Template.afFormGroup_semanticUI.helpers({
     else
       return "unlabeledinput";
 
+  },
+  extraGroupClasses(){
+    return this.afFieldInputAtts.extraGroupClasses;
   }
 });
 
