@@ -1,10 +1,10 @@
 Package.describe({
-  name: 'fabienb4:autoform-semantic-ui',
-  version: '0.9.4',
+  name: 'eoliphant:autoform-semantic-ui',
+  version: '0.9.5',
   // Brief, one-line summary of the package.
   summary: 'Semantic-ui template for aldeed:autoform package.',
   // URL to the Git repository containing the source code for this package.
-  git: 'https://github.com/fabienb4/meteor-autoform-semantic-ui.git',
+  git: 'https://github.com/eoliphan/meteor-autoform-semantic-ui',
   // By default, Meteor will default to using README.md for documentation.
   // To avoid submitting documentation, set this field to null.
   documentation: 'README.md'

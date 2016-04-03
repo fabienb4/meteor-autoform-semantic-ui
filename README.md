@@ -1,6 +1,6 @@
-# fabienb4:autoform-semantic-ui
+# eoliphant:autoform-semantic-ui
 
-> **I am looking for someone to take over this package, if you are interested in maintaining it, please send me an email.**
+> **A maintained fork of fabienb4:autoform-semantic-ui**
 
 Semantic-ui template for `aldeed:autoform` package.
 
