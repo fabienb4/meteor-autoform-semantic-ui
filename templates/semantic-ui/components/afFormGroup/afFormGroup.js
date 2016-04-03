@@ -48,6 +48,9 @@ Template.afFormGroup_semanticUI.helpers({
   rightIcon() {
     return this.afFieldInputAtts.rightIcon;
   },
+  helpText(){
+    return this.afFieldInputAtts.helpText;
+  },
   inputType(){
     let leftLabel  = this.afFieldInputAtts.leftLabel;
     let rightLabel = this.afFieldInputAtts.rightLabel;

@@ -10,6 +10,9 @@
       </label>
     {{/unless}}
     {{> Template.dynamic template=inputType data=this}}
+    {{#if helpText}}
+      <small>{{helpText}}</small>
+    {{/if}}
     {{#if afFieldIsInvalid name=this.name}}
       <div class="ui pointing red basic label">
         {{{afFieldMessage name=this.name}}}
