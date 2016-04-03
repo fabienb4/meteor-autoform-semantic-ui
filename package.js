@@ -1,6 +1,6 @@
 Package.describe({
   name: 'eoliphant:autoform-semantic-ui',
-  version: '0.9.5',
+  version: '0.9.6',
   // Brief, one-line summary of the package.
   summary: 'Semantic-ui template for aldeed:autoform package.',
   // URL to the Git repository containing the source code for this package.
@@ -17,7 +17,7 @@ Package.onUse(function(api) {
 
   api.use('aldeed:autoform@5.8.1', 'client');
 
-  api.use('aldeed:template-extension','client');
+  api.use('aldeed:template-extension@3.4.3','client');
 
   api.addFiles([
     // semantic-ui Template - General
