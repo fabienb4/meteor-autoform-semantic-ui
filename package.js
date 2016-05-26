@@ -1,6 +1,6 @@
 Package.describe({
   name: 'eoliphant:autoform-semantic-ui',
-  version: '0.9.6',
+  version: '0.9.9',
   // Brief, one-line summary of the package.
   summary: 'Semantic-ui template for aldeed:autoform package.',
   // URL to the Git repository containing the source code for this package.
