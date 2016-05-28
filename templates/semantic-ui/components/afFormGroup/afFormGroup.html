@@ -1,5 +1,5 @@
 <template name="afFormGroup_semanticUI">
-  <div class="{{afFormGroupClass}} {{inputClass}} field {{requiredClass}}{{#if afFieldIsInvalid name=this.name}} error{{/if}}" {{afFormGroupAtts}}>
+  <div class="{{afFormGroupClass}} {{extraGroupClasses}} field {{requiredClass}}{{#if afFieldIsInvalid name=this.name}} error{{/if}}" {{afFormGroupAtts}}>
     {{#unless skipLabel}}
       <label {{afFieldLabelAtts}}>
         {{#if this.labelText}}
@@ -9,20 +9,9 @@
         {{/if}}
       </label>
     {{/unless}}
-    {{#if leftLabel}}
-      <div class="ui label">{{leftLabel}}</div>
-    {{else}}
-      {{#if leftIcon}}
-        <i class="{{leftIcon}} icon"></i>
-      {{/if}}
-    {{/if}}
-    {{> afFieldInput this.afFieldInputAtts}}
-    {{#if rightLabel}}
-      <div class="ui label">{{rightLabel}}</div>
-    {{else}}
-      {{#if rightIcon}}
-        <i class="{{rightIcon}} icon"></i>
-      {{/if}}
+    {{> Template.dynamic template=inputType data=this}}
+    {{#if helpText}}
+      <small>{{helpText}}</small>
     {{/if}}
     {{#if afFieldIsInvalid name=this.name}}
       <div class="ui pointing red basic label">

@@ -47,5 +47,32 @@ Template.afFormGroup_semanticUI.helpers({
   },
   rightIcon() {
     return this.afFieldInputAtts.rightIcon;
+  },
+  helpText(){
+    return this.afFieldInputAtts.helpText;
+  },
+  inputType(){
+    let leftLabel  = this.afFieldInputAtts.leftLabel;
+    let rightLabel = this.afFieldInputAtts.rightLabel;
+    let leftIcon   = this.afFieldInputAtts.leftIcon;
+    let rightIcon  = this.afFieldInputAtts.rightIcon;
+
+    if (leftLabel || rightLabel || leftIcon || rightIcon)
+      return "labeledinput";
+    else
+      return "unlabeledinput";
+
+  },
+  extraGroupClasses(){
+    return this.afFieldInputAtts.extraGroupClasses;
   }
 });
+
+Template.unlabeledinput.inheritsHelpersFrom("afFormGroup_semanticUI");
+Template.unlabeledinput.inheritsEventsFrom("afFormGroup_semanticUI");
+Template.unlabeledinput.inheritsHooksFrom("afFormGroup_semanticUI");
+
+Template.labeledinput.inheritsHelpersFrom("afFormGroup_semanticUI");
+Template.labeledinput.inheritsEventsFrom("afFormGroup_semanticUI");
+Template.labeledinput.inheritsHooksFrom("afFormGroup_semanticUI");
+
