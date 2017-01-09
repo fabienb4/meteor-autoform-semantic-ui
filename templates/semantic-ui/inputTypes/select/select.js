@@ -114,22 +114,22 @@ Template.afSelect_semanticUI.events({
 });
 
 Template.afSelect_semanticUI.onRendered(function() {
-	let node = this.$(this.firstNode);
+  let node = this.$(this.firstNode);
 
-	node.dropdown(_.extend({
-		fullTextSearch        : this.data.atts.fullTextSearch || false,
-		allowAdditions        : this.data.atts.allowAdditions || false,
-		maxSelections         : this.data.atts.maxSelections || false,
-		allowCategorySelection: this.data.atts.allowCategorySelection || false,
-		useLabels             : this.data.atts.useLabels === false ? false : true
-	}, this.data.atts.settings));
+  node.dropdown(_.extend({
+    fullTextSearch        : this.data.atts.fullTextSearch || false,
+    allowAdditions        : this.data.atts.allowAdditions || false,
+    maxSelections         : this.data.atts.maxSelections || false,
+    allowCategorySelection: this.data.atts.allowCategorySelection || false,
+    useLabels             : this.data.atts.useLabels === false ? false : true
+  }, this.data.atts.settings));
 
   this.autorun((c) => {
     let data = Template.currentData();
-
-    if (data.value) {
-			node.dropdown("set selected", data.value);
-      c.stop();
+		let prevData = {value: null};
+    if (data.value && data.value !== prevData.value) {
+			prevData.value = data.value;
+      node.dropdown("set selected", data.value);
     }
   });
 });
