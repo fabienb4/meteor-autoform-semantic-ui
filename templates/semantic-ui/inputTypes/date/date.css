@@ -1,0 +1,3 @@
+.ui.form .field > input[type="date"] {
+  min-height: 38px;
+}
